@@ -49,5 +49,5 @@ Small component library in `src/components/ui/`, all zero-JS Astro components st
 - **Blocked by:** scaffold (done)
 
 ## Open Questions to Resolve Before Implementation
-- [ ] Mobile nav pattern — recommend CSS-only slide-down panel under the header (zero JS, no dependencies). OK, or do you want a full-screen overlay drawer?
-- [ ] Section backgrounds — recommend dark charcoal as default with an `offwhite` variant available for contrast-heavy blocks (pricing tables, case-study proof sections). OK, or strictly all-dark v1?
+- [x] Mobile nav → **CSS-only slide-down panel** under the header (Ali approved 2026-07-20)
+- [x] Section backgrounds → **dark default + `offwhite` variant** (Ali approved 2026-07-20)
