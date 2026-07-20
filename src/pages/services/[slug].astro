@@ -1,0 +1,87 @@
+---
+// Service page template — a new .md in src/content/services/ = a new page, no code edits.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Curve from '../../components/ui/Curve.astro';
+import Section from '../../components/ui/Section.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import { hl } from '../../lib/hl';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((svc) => ({ params: { slug: svc.id }, props: { svc } }));
+}
+
+const { svc } = Astro.props;
+const c = svc.data;
+
+const chips: Record<string, string> = {
+  sky: 'bg-sky/15',
+  violet: 'bg-violet/15',
+  coral: 'bg-coral/15',
+  amber: 'bg-amber/25',
+  accent: 'bg-accent/15',
+};
+const dots: Record<string, string> = {
+  sky: 'bg-sky',
+  violet: 'bg-violet',
+  coral: 'bg-coral',
+  amber: 'bg-amber',
+  accent: 'bg-accent',
+};
+---
+
+<BaseLayout title={c.title} description={c.description}>
+  <Section padding="lg" atmo>
+    <div class="max-w-3xl">
+      <span class:list={['inline-flex h-12 w-12 items-center justify-center rounded-xl', chips[c.color] ?? chips.accent]} aria-hidden="true">
+        <span class:list={['h-4 w-4 rounded-full', dots[c.color] ?? dots.accent]}></span>
+      </span>
+      <p class="kicker mt-6">{c.hero.kicker}</p>
+      <h1 class="mt-5" set:html={hl(c.hero.heading)} />
+      <p class="lead mt-6 max-w-2xl">{c.hero.lead}</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button href="/pricing" size="lg">See packages</Button>
+        <Button href="/audit" variant="secondary" size="lg">Start with the $299 Audit</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section>
+    <SectionHeader title={c.deliverables.heading} />
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {
+        c.deliverables.items.map((item) => (
+          <div class="rounded-xl border border-charcoal/10 bg-white p-6 shadow-[0_2px_16px_rgb(17_19_24/0.05)]">
+            <h3>{item.title}</h3>
+            <p class="muted mt-2 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section padding="md">
+    <div class="grid items-center gap-10 rounded-lg border border-accent/40 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent p-8 sm:p-10 lg:grid-cols-[1fr_0.7fr]">
+      <div>
+        <p class="kicker">{c.curve.heading}</p>
+        <p class="lead mt-4">{c.curve.body}</p>
+      </div>
+      <Curve variant="chart" ceilingLabel="your ceiling" xLabel="monthly ad spend →" animate={false} />
+    </div>
+  </Section>
+
+  <Section bordered>
+    <div class="max-w-3xl">
+      <p class="kicker">{c.fit.heading}</p>
+      <h2 class="mt-4">{c.fit.package}</h2>
+      <p class="lead mt-4">{c.fit.body}</p>
+      <div class="mt-8">
+        <Button href="/pricing" size="lg">See all packages</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

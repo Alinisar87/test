@@ -55,13 +55,13 @@ const chips: Record<string, { bg: string; dot: string }> = {
         c.services.items.map((svc: any) => {
           const chip = chips[svc.color] ?? chips.accent;
           return (
-            <div class="rounded-xl border border-charcoal/10 bg-white p-6 shadow-[0_2px_16px_rgb(17_19_24/0.05)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_32px_rgb(17_19_24/0.10)]">
+            <a href={svc.href} class="group rounded-xl border border-charcoal/10 bg-white p-6 shadow-[0_2px_16px_rgb(17_19_24/0.05)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_32px_rgb(17_19_24/0.10)]">
               <span class:list={['inline-flex h-10 w-10 items-center justify-center rounded-lg', chip.bg]} aria-hidden="true">
                 <span class:list={['h-3.5 w-3.5 rounded-full', chip.dot]} />
               </span>
-              <h3 class="mt-4">{svc.name}</h3>
+              <h3 class="mt-4 transition-colors group-hover:text-accent-deep">{svc.name}</h3>
               <p class="muted mt-2 text-sm leading-relaxed">{svc.blurb}</p>
-            </div>
+            </a>
           );
         })
       }

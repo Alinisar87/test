@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Curve from '../components/ui/Curve.astro';
+import Section from '../components/ui/Section.astro';
+---
+
+<BaseLayout
+  title="404 — page not found"
+  description="This page doesn't exist. The rest of the site does."
+  noindex
+>
+  <Section padding="lg" atmo>
+    <div class="max-w-3xl">
+      <p class="kicker">404</p>
+      <h1 class="mt-5">This page is past the ceiling.</h1>
+      <p class="lead mt-6 max-w-xl">
+        Nothing lives at this address. The pages that make money are all still here, though.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button href="/" size="lg">Back to home</Button>
+        <Button href="/pricing" variant="secondary" size="lg">See packages</Button>
+      </div>
+    </div>
+  </Section>
+  <Curve variant="divider" />
+</BaseLayout>
