@@ -1,0 +1,85 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Section from '../components/ui/Section.astro';
+
+const entry = await getEntry('pages', 'contact');
+if (!entry) throw new Error('Missing content: src/content/pages/contact.md');
+const c = entry.data as any;
+
+// TODO(Ali): set PUBLIC_GHL_FORM_ENDPOINT + PUBLIC_WHATSAPP_URL in Cloudflare env
+const formEndpoint = import.meta.env.PUBLIC_GHL_FORM_ENDPOINT || '';
+const whatsappUrl = import.meta.env.PUBLIC_WHATSAPP_URL || '';
+
+const inputClass =
+  'w-full rounded-md border border-offwhite/20 bg-offwhite/5 px-4 py-3 text-offwhite placeholder:text-offwhite/40';
+---
+
+<BaseLayout title={c.title} description={c.description}>
+  <Section padding="lg">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1fr]">
+      <div>
+        <p class="kicker">{c.hero.kicker}</p>
+        <h1 class="mt-5">{c.hero.heading}</h1>
+        <p class="lead mt-6">{c.hero.lead}</p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          {whatsappUrl && (
+            <Button href={whatsappUrl} variant="secondary">
+              {c.whatsapp.cta}
+            </Button>
+          )}
+          <p class="muted text-sm">
+            {c.email.note}
+            <a href={`mailto:${c.email.address}`} class="text-accent underline underline-offset-3">
+              {c.email.address}
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div>
+        {
+          formEndpoint ? (
+            <form method="POST" action={formEndpoint} class="flex flex-col gap-5">
+              <input type="hidden" name="source_page" value="contact" />
+              <div>
+                <label for="name" class="mb-2 block text-sm font-medium">{c.form.nameLabel}</label>
+                <input id="name" name="name" type="text" required class={inputClass} />
+              </div>
+              <div>
+                <label for="email" class="mb-2 block text-sm font-medium">{c.form.emailLabel}</label>
+                <input id="email" name="email" type="email" required class={inputClass} />
+              </div>
+              <div>
+                <label for="store" class="mb-2 block text-sm font-medium">{c.form.storeLabel}</label>
+                <input id="store" name="store_url" type="url" class={inputClass} />
+              </div>
+              <div>
+                <label for="spend" class="mb-2 block text-sm font-medium">{c.form.spendLabel}</label>
+                <select id="spend" name="monthly_ad_spend" class={inputClass}>
+                  {c.form.spendOptions.map((opt: string) => (
+                    <option value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label for="message" class="mb-2 block text-sm font-medium">{c.form.messageLabel}</label>
+                <textarea id="message" name="message" rows="5" required class={inputClass} />
+              </div>
+              <div class="flex flex-wrap items-center gap-4">
+                <Button size="lg">{c.form.submit}</Button>
+                <p class="muted font-mono text-xs">{c.form.privacyNote}</p>
+              </div>
+            </form>
+          ) : (
+            <div class="rounded-lg border border-dashed border-offwhite/20 p-10">
+              <h3>{c.fallback.heading}</h3>
+              <p class="lead mt-3">{c.fallback.body}</p>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
