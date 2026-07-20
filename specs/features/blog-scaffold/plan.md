@@ -1,7 +1,7 @@
 # Plan — Blog Scaffold
 
 **Branch:** session branch · **Roadmap:** Phase 4, item 12
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated
 
 ## Problem Statement
 Content collection + listing + post template, zero posts required — so publishing later is "add a .md file", nothing else.

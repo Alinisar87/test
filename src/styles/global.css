@@ -22,6 +22,8 @@
 @theme {
   --color-charcoal: #111318;
   --color-accent: #2ad17e;
+  /* Contrast-safe accent for text on offwhite sections (#2ad17e fails WCAG on light bg) */
+  --color-accent-deep: #127246;
   --color-offwhite: #f7f7f5;
 
   --font-sans: 'Inter Variable', 'Inter Fallback', ui-sans-serif, system-ui, sans-serif;
@@ -90,6 +92,10 @@
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: var(--color-accent);
+  }
+  /* On light sections the bright accent fails contrast — swap to the deep variant */
+  .bg-offwhite .kicker {
+    color: var(--color-accent-deep);
   }
   /* Lead paragraph — uses currentColor + opacity so it works on dark and offwhite sections */
   .lead {

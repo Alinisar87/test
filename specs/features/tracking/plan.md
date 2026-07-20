@@ -1,7 +1,7 @@
 # Plan — Tracking
 
 **Branch:** session branch · **Roadmap:** Phase 4, item 10
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated (container config pending Ali accounts)
 
 ## Problem Statement
 GTM container wiring: GA4 + Meta Pixel load through GTM; conversion events (`audit_checkout_click`, `purchase`, `call_booked`) captured.

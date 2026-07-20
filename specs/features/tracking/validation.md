@@ -1,8 +1,8 @@
 # Validation — Tracking
 
 ## Smoke
-- [ ] Env unset: zero `<script>` in all built pages (unchanged)
-- [ ] Test ID set: GTM snippet + noscript present on every page; purchase push present on /thanks only
+- [x] Env unset: zero executable `<script>` in all built pages
+- [x] Test ID set: GTM snippet + noscript on every page; purchase push on /thanks only
 
 ## Pending Ali (accounts required)
 - [ ] Create GTM container + GA4 + Meta Pixel; set `PUBLIC_GTM_ID` in Cloudflare

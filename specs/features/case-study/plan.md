@@ -1,7 +1,7 @@
 # Plan — Case Study (/case-studies/shopify-roas-ceiling)
 
 **Branch:** session branch (serves as `feature/case-study`) · **Roadmap:** Phase 3, item 7
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated (real numbers pending Ali)
 
 ## Problem Statement
 The proof page: the Shopify ROAS analysis as narrative (situation → curve found → fixes → numbers), on a template reusable for future studies.

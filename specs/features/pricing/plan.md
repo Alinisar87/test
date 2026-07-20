@@ -1,7 +1,7 @@
 # Plan — Pricing (/pricing)
 
 **Branch:** session branch (serves as `feature/pricing`) · **Roadmap:** Phase 3, item 6
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated (DRAFT PRICES pending Ali)
 
 ## Problem Statement
 Trust page: 3 retainer tiers, "every engagement starts with the audit" framing, FAQ.

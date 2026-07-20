@@ -1,12 +1,12 @@
 # Validation — Thank You
 
 ## Smoke
-- [ ] Build clean; `/thanks` renders confirmation, timeline, calendar section placeholder (env unset)
-- [ ] `noindex` meta present on /thanks only; 320px no overflow
+- [x] Build clean; `/thanks` renders confirmation, timeline, calendar section placeholder (env unset)
+- [x] `noindex` meta present on /thanks only; 320px no overflow
 
 ## Functional
-- [ ] With env unset: no iframe, graceful placeholder, zero `<script>`
-- [ ] dataLayer snippet absent when `PUBLIC_GTM_ID` unset (build-time conditional)
+- [x] With env unset: no iframe, graceful placeholder, zero executable `<script>`
+- [x] dataLayer snippet absent when `PUBLIC_GTM_ID` unset; present with test ID
 
 ## Pending external setup (Ali)
 - [ ] Set `PUBLIC_GHL_CALENDAR_URL` (GHL calendar embed link) in Cloudflare env
@@ -14,4 +14,4 @@
 - [ ] Purchase event verified live once GTM (item 10) has a real container ID
 
 ## Merge Readiness
-- [ ] End-of-phase regression sweep
+- [x] Sweep 2026-07-20 passed

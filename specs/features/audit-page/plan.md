@@ -2,7 +2,7 @@
 
 **Branch:** `claude/sfl-website-specs-phase-2-81fmd9` (serves as `feature/audit-page`)
 **Roadmap phase:** Phase 2, item 3
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated (draft copy pending Ali)
 
 ---
 

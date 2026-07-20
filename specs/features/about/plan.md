@@ -1,7 +1,7 @@
 # Plan — About (/about)
 
 **Branch:** session branch (serves as `feature/about`) · **Roadmap:** Phase 3, item 8
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated (draft copy pending Ali)
 
 ## Problem Statement
 Trust page: founder story, credentials (FCCA/CIA/CFE/CAA), team model, why "Seven Figures Lab".

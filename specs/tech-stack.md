@@ -13,6 +13,7 @@
 | Analytics | GA4 + Meta Pixel via **GTM** | One container; agency must practice what it preaches on clean tagging |
 | Fonts | Self-hosted (fontsource): **Inter** (UI/body, tabular numerals) + **JetBrains Mono** (numbers/data accents) | No render-blocking Google Fonts requests |
 | Images | Astro `<Image>`, AVIF/WebP | LCP discipline |
+| Sitemap | `@astrojs/sitemap` (draft/noindex pages excluded via config scan) | Added in SEO feature |
 | Repo | Git, GitHub `Alinisar87/test` for now (may migrate to `sevenfigureslab-site` later) | CI deploy via Cloudflare Pages Git integration |
 
 ## Constraints
@@ -22,7 +23,7 @@
 - Env vars for GHL endpoint + GTM ID; nothing hardcoded
 
 ## Brand constants (v1 — revisit after logo)
-- Distinct from Markup Valley palette (separate brand): deep charcoal `#111318`, electric green accent `#2AD17E` (profit/growth signal), off-white `#F7F7F5`
+- Distinct from Markup Valley palette (separate brand): deep charcoal `#111318`, electric green accent `#2AD17E` (profit/growth signal), off-white `#F7F7F5`, deep accent `#127246` (contrast-safe accent text on light sections)
 - Tone: analytical, direct, zero guru-speak. Numbers over adjectives.
 - Visual motif: **the curve** — a rising-then-flattening spend curve used in hero, section dividers, favicon
 

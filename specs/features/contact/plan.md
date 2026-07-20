@@ -1,7 +1,7 @@
 # Plan — Contact (/contact)
 
 **Branch:** session branch (serves as `feature/contact`) · **Roadmap:** Phase 3, item 9
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated (GHL endpoint + WhatsApp pending Ali)
 
 ## Problem Statement
 Low-friction contact: native form → GHL, WhatsApp link, no phone-number-required friction.

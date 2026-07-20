@@ -9,31 +9,31 @@ Each item = one feature branch with plan/requirements/validation per SDD. MVP cu
 2. ~~**design-system**~~ ✅ — typography scale, buttons, section components, the curve motif SVG, mobile nav — *done 2026-07-20*
 
 ## Phase 2 — Money pages
-3. **audit-page** (/audit — build FIRST, it's the funnel)
+3. ~~**audit-page**~~ ✅ (/audit — build FIRST, it's the funnel) — *done 2026-07-20; DRAFT copy + Stripe link pending Ali*
    - Hero: "Find the exact point your ad spend stops making money"
    - What's in the audit (5 deliverables from offer doc)
    - The Ceiling Guarantee, verbatim
    - How it works: Pay → connect accounts → 5 days → walkthrough call
    - Stripe payment link CTA + FAQ (objections: "why paid?", "what access do you need?", "what if my account is small?")
-4. **home** (/)
+4. ~~**home**~~ ✅ (/) — *done 2026-07-20; draft copy*
    - Hero: problem-first ("ROAS dies every time you scale? There's a curve that explains it") + single CTA → /audit
    - The curve explained in 3 steps (visual)
    - Why us: 3 differentiators (methodology / credentials / economics)
    - Case study teaser, pricing teaser, final CTA
-5. **thank-you** (/thanks) — GHL calendar embed, "what happens next" timeline, sets `purchase` conversion event
+5. ~~**thank-you**~~ ✅ (/thanks) — GHL calendar embed, "what happens next" timeline, sets `purchase` conversion event — *done 2026-07-20; GHL calendar URL pending*
 
 ### ——— MVP CUT LINE: site can launch and take money here ———
 
 ## Phase 3 — Trust pages
-6. **pricing** (/pricing) — 3 retainer tiers table from offer doc, "every engagement starts with the audit" framing, FAQ
-7. **case-study** (/case-studies/shopify-roas-ceiling) — the Shopify ads analysis rewritten as narrative: situation → curve found → fixes → numbers. Template reusable for future studies.
-8. **about** (/about) — founder story, credentials (FCCA/CIA/CFE/CAA), team model, why "Seven Figures Lab"
-9. **contact** (/contact) — form → GHL, WhatsApp link, no phone-number-required friction
+6. ~~**pricing**~~ ✅ (/pricing) — 3 retainer tiers table from offer doc, "every engagement starts with the audit" framing, FAQ — *done 2026-07-20; DRAFT TIER PRICES — replace before real traffic*
+7. ~~**case-study**~~ ✅ (/case-studies/shopify-roas-ceiling) — the Shopify ads analysis rewritten as narrative: situation → curve found → fixes → numbers. Template reusable for future studies. — *template done 2026-07-20; placeholder numbers, noindex until real analysis*
+8. ~~**about**~~ ✅ (/about) — founder story, credentials (FCCA/CIA/CFE/CAA), team model, why "Seven Figures Lab" — *done 2026-07-20; draft copy*
+9. ~~**contact**~~ ✅ (/contact) — form → GHL, WhatsApp link, no phone-number-required friction — *done 2026-07-20; GHL endpoint + WhatsApp URL pending*
 
 ## Phase 4 — Growth infrastructure
-10. **tracking** — GTM container, GA4 + Meta Pixel, conversion events wired and test-verified
-11. **seo** — meta/OG per page, sitemap.xml, schema.org (Organization, Service, FAQPage), OG image with the curve
-12. **blog-scaffold** — content collection + listing + post template, zero posts required
+10. ~~**tracking**~~ ✅ — GTM container, GA4 + Meta Pixel, conversion events wired and test-verified — *code rails done 2026-07-20; GTM/GA4/Pixel accounts + container config pending*
+11. ~~**seo**~~ ✅ — meta/OG per page, sitemap.xml, schema.org (Organization, Service, FAQPage), OG image with the curve — *done 2026-07-20; Search Console pending domain*
+12. ~~**blog-scaffold**~~ ✅ — content collection + listing + post template, zero posts required — *done 2026-07-20*
 13. **lead-magnet** (post-launch) — free "Ceiling Calculator" (island component: input spend tiers + revenue → rough marginal ROAS) as email-capture alternative to the paid audit
 
 ## Later / parked

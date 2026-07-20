@@ -2,7 +2,7 @@
 
 **Branch:** `claude/sfl-website-specs-phase-2-81fmd9` (serves as `feature/thank-you`)
 **Roadmap phase:** Phase 2, item 5 — completes the MVP cut line
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated (GHL URL pending Ali)
 
 ---
 

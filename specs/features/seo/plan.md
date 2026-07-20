@@ -1,7 +1,7 @@
 # Plan — SEO
 
 **Branch:** session branch · **Roadmap:** Phase 4, item 11
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated (Search Console pending domain)
 
 ## Problem Statement
 Meta/OG per page, sitemap.xml, schema.org (Organization, Service, FAQPage), OG image with the curve.
