@@ -4,12 +4,27 @@
 
 /* Brand tokens — single source of truth (specs/tech-stack.md).
    Components use class names (bg-charcoal, text-accent, bg-offwhite), never raw hex. */
+/* Metric-matched fallback so text doesn't shift when Inter swaps in (CLS) */
+@font-face {
+  font-family: 'Inter Fallback';
+  src:
+    local('Arial'),
+    local('Roboto'),
+    local('Helvetica Neue'),
+    local('Liberation Sans'),
+    local('DejaVu Sans');
+  size-adjust: 107.4%;
+  ascent-override: 90.2%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+}
+
 @theme {
   --color-charcoal: #111318;
   --color-accent: #2ad17e;
   --color-offwhite: #f7f7f5;
 
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', 'Inter Fallback', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
 }
 
