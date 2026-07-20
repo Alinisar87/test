@@ -45,7 +45,7 @@ Initialize an Astro project with Tailwind at the repo root, alongside the existi
 - `README.md`, `.gitignore`, `.nvmrc` — new
 
 ## Out of Scope for This Feature
-- Typography scale, buttons, section components, curve motif SVG, **mobile nav** — all roadmap item 2 (design-system)
+- Typography scale, buttons, section components, the **reusable** curve motif component, **mobile nav** — all roadmap item 2 (design-system). A one-off inline curve illustration on the placeholder page is allowed (it previews the motif; item 2 turns it into a component).
 - Any real page copy or content collections config — items 3–5
 - GTM/analytics, forms, Stripe — later phases
 - Actually connecting the Cloudflare Pages dashboard to the repo (manual, Ali's account)

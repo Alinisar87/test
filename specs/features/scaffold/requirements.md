@@ -14,7 +14,7 @@ Functional and technical requirements for this feature. Be specific enough to va
 - Fonts render self-hosted; site makes **zero** third-party network requests
 
 ### Should
-- Placeholder page shows the positioning line from mission.md so the deploy preview isn't an empty box
+- Placeholder page shows the positioning line from mission.md so the deploy preview isn't an empty box — polished: hero with inline curve illustration (SVG, no JS), CTA to `/audit`, and fact tiles from the offer ($299 flat, 5-day delivery, marginal-ROAS focus)
 - README documents: local dev, build, and the exact Cloudflare Pages settings
 
 ### Nice to have

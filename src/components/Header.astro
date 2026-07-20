@@ -1,6 +1,5 @@
 ---
 const links = [
-  { href: '/audit', label: 'Audit' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/case-studies/shopify-roas-ceiling', label: 'Case Study' },
   { href: '/about', label: 'About' },
@@ -10,12 +9,22 @@ const links = [
 
 <header class="border-b border-offwhite/10">
   <div
-    class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4 sm:px-6"
+    class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-4 sm:px-6"
   >
-    <a href="/" class="font-mono text-sm font-semibold tracking-tight text-offwhite">
+    <a href="/" class="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight text-offwhite">
+      <svg viewBox="0 0 32 32" class="h-6 w-6" aria-hidden="true">
+        <rect width="32" height="32" rx="6" fill="none" stroke="#2AD17E" stroke-opacity="0.35"></rect>
+        <path
+          d="M4 26 C 10 24, 14 14, 18 10 C 21 7, 25 6, 28 6"
+          fill="none"
+          stroke="#2AD17E"
+          stroke-width="3"
+          stroke-linecap="round"
+        ></path>
+      </svg>
       Seven Figures <span class="text-accent">Lab</span>
     </a>
-    <nav aria-label="Main">
+    <nav aria-label="Main" class="flex flex-wrap items-center gap-x-5 gap-y-1">
       <ul class="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-offwhite/80">
         {
           links.map((link) => (
@@ -27,6 +36,12 @@ const links = [
           ))
         }
       </ul>
+      <a
+        href="/audit"
+        class="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-charcoal transition hover:bg-accent/85"
+      >
+        Get the Audit
+      </a>
     </nav>
   </div>
 </header>
