@@ -85,6 +85,25 @@
 }
 
 @layer components {
+  /* Hero atmosphere: chart-paper grid + soft accent glow. Apply to a relative section;
+     pair with an inner container that sits above (relative z-10). */
+  .hero-atmo {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(640px 420px at 78% 30%, rgb(42 209 126 / 0.09), transparent 65%),
+      radial-gradient(480px 320px at 12% 85%, rgb(42 209 126 / 0.05), transparent 60%),
+      linear-gradient(rgb(247 247 245 / 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(247 247 245 / 0.028) 1px, transparent 1px);
+    background-size:
+      auto,
+      auto,
+      44px 44px,
+      44px 44px;
+    mask-image: linear-gradient(to bottom, black 55%, transparent);
+  }
+
   /* Mono uppercase eyebrow above headings */
   .kicker {
     font-family: var(--font-mono);

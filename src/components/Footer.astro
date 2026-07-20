@@ -1,14 +1,57 @@
 ---
+// Site footer: brand + positioning, site links, fine print.
 const year = new Date().getFullYear();
+
+const links = [
+  { href: '/audit', label: 'The Audit' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/case-studies/shopify-roas-ceiling', label: 'Case Study' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/blog', label: 'Notes' },
+];
 ---
 
-<footer class="border-t border-offwhite/10">
-  <div
-    class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-offwhite/60 sm:flex-row sm:items-center sm:justify-between sm:px-6"
-  >
-    <p class="max-w-md">
-      Profit-first reporting from a chartered-accountant-led team, not screenshot ROAS.
-    </p>
-    <p class="font-mono">© {year} Seven Figures Lab</p>
+<footer class="relative overflow-hidden border-t border-offwhite/10">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.2fr_1fr]">
+    <div>
+      <a href="/" class="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight">
+        <svg viewBox="0 0 32 32" class="h-6 w-6" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="none" stroke="#2AD17E" stroke-opacity="0.35"></rect>
+          <path
+            d="M4 26 C 10 24, 14 14, 18 10 C 21 7, 25 6, 28 6"
+            fill="none"
+            stroke="#2AD17E"
+            stroke-width="3"
+            stroke-linecap="round"
+          ></path>
+        </svg>
+        Seven Figures <span class="text-accent">Lab</span>
+      </a>
+      <p class="muted mt-4 max-w-sm text-sm leading-relaxed">
+        Profit-first reporting from a chartered-accountant-led team, not screenshot ROAS.
+      </p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm text-offwhite/70 sm:grid-cols-3">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} class="transition-colors hover:text-accent">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+  <div class="border-t border-offwhite/10">
+    <div
+      class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 font-mono text-xs text-offwhite/50 sm:flex-row sm:items-center sm:justify-between sm:px-6"
+    >
+      <p>© {year} Seven Figures Lab</p>
+      <p>Find the ceiling. <span class="text-accent">Move it.</span></p>
+    </div>
   </div>
 </footer>

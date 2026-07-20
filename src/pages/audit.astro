@@ -37,7 +37,7 @@ const faqSchema = JSON.stringify({
 <BaseLayout title={c.title} description={c.description}>
   <script type="application/ld+json" set:html={serviceSchema} />
   <script type="application/ld+json" set:html={faqSchema} />
-  <Section padding="lg">
+  <Section padding="lg" atmo>
     <div class="max-w-3xl">
       <p class="kicker">{c.hero.kicker}</p>
       <h1 class="mt-5">{c.hero.heading}</h1>
@@ -71,7 +71,7 @@ const faqSchema = JSON.stringify({
   </Section>
 
   <Section padding="md">
-    <div class="rounded-lg border border-accent/40 bg-accent/5 p-8 sm:p-10">
+    <div class="rounded-lg border border-accent/40 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent p-8 shadow-[0_0_60px_rgb(42_209_126/0.08)] sm:p-10">
       <p class="kicker">{c.guarantee.kicker}</p>
       <h2 class="mt-4">{c.guarantee.heading}</h2>
       <p class="lead mt-4 max-w-2xl">{c.guarantee.body}</p>

@@ -34,6 +34,7 @@ tiers:
         - 'Bi-weekly strategy call'
         - 'Landing page / offer CRO recommendations'
       highlighted: true
+      badge: 'Most common'
     - name: 'Growth Partner'
       price: '$4,000'
       cadence: '/month'

@@ -12,8 +12,10 @@ const { href, variant = 'primary', size = 'md', class: className } = Astro.props
 const Tag = href ? 'a' : 'button';
 
 const variants = {
-  primary: 'bg-accent font-semibold text-charcoal hover:bg-accent/85',
-  secondary: 'border border-current/25 font-medium opacity-80 hover:border-accent hover:text-accent hover:opacity-100',
+  primary:
+    'bg-accent font-semibold text-charcoal shadow-[0_0_28px_rgb(42_209_126/0.28)] hover:bg-accent/90 hover:shadow-[0_0_36px_rgb(42_209_126/0.40)] hover:-translate-y-px active:translate-y-0',
+  secondary:
+    'border border-current/25 font-medium opacity-80 hover:border-accent hover:text-accent hover:opacity-100 hover:-translate-y-px active:translate-y-0',
 };
 const sizes = {
   md: 'px-4 py-2 text-sm',
@@ -21,6 +23,9 @@ const sizes = {
 };
 ---
 
-<Tag href={href} class:list={['inline-block rounded-md transition', variants[variant], sizes[size], className]}>
+<Tag
+  href={href}
+  class:list={['inline-block rounded-md transition duration-200', variants[variant], sizes[size], className]}
+>
   <slot />
 </Tag>

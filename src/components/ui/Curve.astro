@@ -50,6 +50,9 @@ const gradientId = `curve-fill-${Math.random().toString(36).slice(2, 8)}`;
             <stop offset="0%" stop-color="#2AD17E" stop-opacity="0.22" />
             <stop offset="100%" stop-color="#2AD17E" stop-opacity="0" />
           </linearGradient>
+          <filter id={`${gradientId}-glow`} x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="7" />
+          </filter>
         </defs>
 
         <line x1="48" y1="20" x2="48" y2="308" stroke="#F7F7F5" stroke-opacity="0.18" stroke-width="1" />
@@ -64,6 +67,15 @@ const gradientId = `curve-fill-${Math.random().toString(36).slice(2, 8)}`;
           fill={`url(#${gradientId})`}
         />
 
+        <path
+          d="M 48 290 C 150 274, 216 156, 312 108 C 380 74, 462 62, 540 58"
+          fill="none"
+          stroke="#2AD17E"
+          stroke-opacity="0.45"
+          stroke-width="6"
+          stroke-linecap="round"
+          filter={`url(#${gradientId}-glow)`}
+        />
         <path
           class:list={[animate && 'curve-path']}
           d="M 48 290 C 150 274, 216 156, 312 108 C 380 74, 462 62, 540 58"

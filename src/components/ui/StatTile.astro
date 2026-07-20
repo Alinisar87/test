@@ -8,7 +8,7 @@ interface Props {
 const { value, label } = Astro.props;
 ---
 
-<div class="py-4">
-  <p class="data text-3xl text-accent">{value}</p>
+<div class="border-l-2 border-accent/40 py-2 pl-5 transition-colors hover:border-accent">
+  <p class="data text-4xl text-accent">{value}</p>
   <p class="muted mt-2 text-sm leading-relaxed">{label}</p>
 </div>

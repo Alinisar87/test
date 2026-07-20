@@ -17,7 +17,7 @@ const { Content } = await render(study);
 ---
 
 <BaseLayout title={study.data.title} description={study.data.description} noindex={study.data.draft}>
-  <Section padding="lg">
+  <Section padding="lg" atmo>
     <div class="max-w-3xl">
       <p class="kicker">{study.data.kicker}</p>
       <h1 class="mt-5">{study.data.title}</h1>

@@ -1,28 +1,32 @@
 ---
-// Usage: <Section variant="offwhite" bordered padding="lg"> ... </Section>
+// Usage: <Section variant="offwhite" bordered padding="lg" atmo> ... </Section>
 // Dark charcoal by default; "offwhite" flips to light background with charcoal text.
+// `atmo` adds the chart-paper grid + accent glow backdrop (hero sections).
 interface Props {
   variant?: 'dark' | 'offwhite';
   bordered?: boolean;
   padding?: 'md' | 'lg';
+  atmo?: boolean;
   class?: string;
 }
 
-const { variant = 'dark', bordered = false, padding = 'md', class: className } = Astro.props;
+const { variant = 'dark', bordered = false, padding = 'md', atmo = false, class: className } = Astro.props;
 const paddings = {
   md: 'py-12 sm:py-16',
-  lg: 'py-16 sm:py-24',
+  lg: 'py-16 sm:py-24 lg:py-28',
 };
 ---
 
 <section
   class:list={[
+    atmo && 'relative overflow-hidden',
     variant === 'offwhite' && 'bg-offwhite text-charcoal',
     bordered && 'border-t border-offwhite/10',
     className,
   ]}
 >
-  <div class:list={['mx-auto max-w-6xl px-4 sm:px-6', paddings[padding]]}>
+  {atmo && <div class="hero-atmo" aria-hidden="true" />}
+  <div class:list={['mx-auto max-w-6xl px-4 sm:px-6', atmo && 'relative', paddings[padding]]}>
     <slot />
   </div>
 </section>

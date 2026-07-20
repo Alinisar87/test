@@ -13,7 +13,7 @@ const c = entry.data as any;
 ---
 
 <BaseLayout title={c.title} description={c.description}>
-  <Section padding="lg">
+  <Section padding="lg" atmo>
     <div class="max-w-3xl">
       <p class="kicker">{c.intro.kicker}</p>
       <h1 class="mt-5">{c.intro.heading}</h1>
@@ -31,10 +31,17 @@ const c = entry.data as any;
         c.tiers.items.map((tier: any) => (
           <div
             class:list={[
-              'flex flex-col rounded-lg border p-8',
-              tier.highlighted ? 'border-charcoal bg-charcoal text-offwhite' : 'border-charcoal/15',
+              'relative flex flex-col rounded-lg border p-8 transition-all duration-200 hover:-translate-y-1',
+              tier.highlighted
+                ? 'border-charcoal bg-charcoal text-offwhite shadow-[0_16px_48px_rgb(17_19_24/0.35)] ring-1 ring-accent/60'
+                : 'border-charcoal/15 bg-white/40 hover:border-charcoal/35 hover:shadow-[0_12px_32px_rgb(17_19_24/0.12)]',
             ]}
           >
+            {tier.badge && (
+              <span class="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 font-mono text-xs font-semibold text-charcoal">
+                {tier.badge}
+              </span>
+            )}
             <h3>{tier.name}</h3>
             <p class="mt-4">
               <span class="data text-4xl">{tier.price}</span>
