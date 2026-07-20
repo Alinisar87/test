@@ -36,8 +36,8 @@ Each item = one feature branch with plan/requirements/validation per SDD. MVP cu
 12. ~~**blog-scaffold**~~ ✅ — content collection + listing + post template, zero posts required — *done 2026-07-20*
 13. **lead-magnet** (post-launch) — free "Ceiling Calculator" (island component: input spend tiers + revenue → rough marginal ROAS) as email-capture alternative to the paid audit
 
-14. **kb-redesign** — bright rebrand (KlientBoost-inspired), published packages from ~$199/mo (SoftCrust-style), services grid — *Ali directed 2026-07-20*
-15. **service-pages** — one page per service line (Google Ads, Paid Social, CRO, SEO, Email), package cross-links
+14. ~~**kb-redesign**~~ ✅ — bright rebrand (KlientBoost-inspired), published packages from ~$199/mo (SoftCrust-style), services grid — *done 2026-07-20; prices/copy draft*
+15. ~~**service-pages**~~ ✅ — one page per service line + /services index + custom 404 — *done 2026-07-20; copy draft*
 
 ## Later / parked
 - **client-app** — client-facing app (reporting/plan experience, KlientBoost-style offering); Ali to develop for his customers
