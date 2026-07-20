@@ -9,8 +9,9 @@ const entry = await getEntry('pages', 'thanks');
 if (!entry) throw new Error('Missing content: src/content/pages/thanks.md');
 const c = entry.data as any;
 
-// TODO(Ali): set PUBLIC_BOOKING_URL (Cal.com event link, e.g. https://cal.com/you/walkthrough) in Cloudflare env
-const calendarUrl = import.meta.env.PUBLIC_BOOKING_URL || '';
+import { SITE_CONFIG } from '../config';
+
+const calendarUrl = import.meta.env.PUBLIC_BOOKING_URL || SITE_CONFIG.bookingUrl;
 const gtmId = import.meta.env.PUBLIC_GTM_ID || '';
 ---
 

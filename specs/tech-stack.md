@@ -7,9 +7,9 @@
 | Framework | **Astro 5** | Content-heavy marketing site → zero-JS by default, easiest path to 95+ PageSpeed. Islands available if needed. (Next.js rejected: SSR complexity buys nothing here.) |
 | Styling | Tailwind CSS | Speed of iteration; Claude Code works well with it |
 | Hosting | **Cloudflare Pages** | Free, global edge, fast for PK/GCC + US visitors alike |
-| Forms | Native form → **any POST endpoint** (`PUBLIC_FORM_ENDPOINT`: Formspree/Web3Forms free tier; GHL possible later) | Ali opted out of GHL (2026-07-20); provider-agnostic keeps the switch a one-var change |
+| Forms | Native form → **any POST endpoint** (**Formspree** live; `PUBLIC_FORM_ENDPOINT` env overrides; public URLs live in `src/config.ts`) | Ali opted out of GHL (2026-07-20); provider-agnostic keeps the switch a one-var change |
 | Checkout ($299 audit) | Stripe Payment Link (v1) | Zero build cost; upgrade to embedded checkout only if conversion data justifies it |
-| Booking | **Cal.com free** embed on thank-you page (`PUBLIC_BOOKING_URL`; any embeddable scheduler works) | Ali opted out of GHL (2026-07-20); Cal.com free = unlimited bookings, availability set in-app, no Google Calendar required |
+| Booking | **Cal.com free** embed on thank-you page (**Cal.com live**; `PUBLIC_BOOKING_URL` env overrides; public URLs live in `src/config.ts`) | Ali opted out of GHL (2026-07-20); Cal.com free = unlimited bookings, availability set in-app, no Google Calendar required |
 | Analytics | GA4 + Meta Pixel via **GTM** | One container; agency must practice what it preaches on clean tagging |
 | Fonts | Self-hosted (fontsource): **Inter** (UI/body, tabular numerals) + **JetBrains Mono** (numbers/data accents) | No render-blocking Google Fonts requests |
 | Images | Astro `<Image>`, AVIF/WebP | LCP discipline |
