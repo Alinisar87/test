@@ -1,0 +1,81 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Curve from '../components/ui/Curve.astro';
+import FaqItem from '../components/ui/FaqItem.astro';
+import Section from '../components/ui/Section.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+
+const entry = await getEntry('pages', 'pricing');
+if (!entry) throw new Error('Missing content: src/content/pages/pricing.md');
+const c = entry.data as any;
+---
+
+<BaseLayout title={c.title} description={c.description}>
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <p class="kicker">{c.intro.kicker}</p>
+      <h1 class="mt-5">{c.intro.heading}</h1>
+      <p class="lead mt-6 max-w-2xl">{c.intro.lead}</p>
+      <div class="mt-8">
+        <Button href="/audit" size="lg">{c.intro.cta}</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section variant="offwhite">
+    <SectionHeader kicker={c.tiers.kicker} title={c.tiers.heading} />
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      {
+        c.tiers.items.map((tier: any) => (
+          <div
+            class:list={[
+              'flex flex-col rounded-lg border p-8',
+              tier.highlighted ? 'border-charcoal bg-charcoal text-offwhite' : 'border-charcoal/15',
+            ]}
+          >
+            <h3>{tier.name}</h3>
+            <p class="mt-4">
+              <span class="data text-4xl">{tier.price}</span>
+              <span class="muted text-sm">{tier.cadence}</span>
+            </p>
+            <p class="muted mt-4 text-sm leading-relaxed">{tier.fit}</p>
+            <ul class="mt-6 flex-1 space-y-2 text-sm">
+              {tier.includes.map((line: string) => (
+                <li class="flex gap-2">
+                  <span class="text-accent" aria-hidden="true">
+                    —
+                  </span>
+                  <span class="opacity-80">{line}</span>
+                </li>
+              ))}
+            </ul>
+            <Button href="/audit" size="md" class="mt-8 text-center">
+              {c.intro.cta}
+            </Button>
+          </div>
+        ))
+      }
+    </div>
+    <p class="muted mt-6 font-mono text-xs">{c.tiers.note}</p>
+  </Section>
+
+  <Section bordered>
+    <SectionHeader kicker={c.faq.kicker} title={c.faq.heading} />
+    <div class="mt-8 max-w-3xl">
+      {c.faq.items.map((item: any) => <FaqItem question={item.q}>{item.a}</FaqItem>)}
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <h2>{c.finalCta.heading}</h2>
+      <div class="mt-8">
+        <Button href="/audit" size="lg">{c.finalCta.cta}</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
