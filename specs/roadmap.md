@@ -4,7 +4,7 @@ Each item = one feature branch with plan/requirements/validation per SDD. MVP cu
 
 ## Phase 1 — Foundation
 1. ~~**scaffold**~~ ✅ — Astro + Tailwind project, layout shell (header/footer/nav), brand tokens, fonts, deploy pipeline to Cloudflare Pages (deploy from day one, not at the end) — *done 2026-07-20; Cloudflare dashboard connection pending (manual)*
-2. **design-system** — typography scale, buttons, section components, the curve motif SVG, mobile nav
+2. ~~**design-system**~~ ✅ — typography scale, buttons, section components, the curve motif SVG, mobile nav — *done 2026-07-20*
 
 ## Phase 2 — Money pages
 3. **audit-page** (/audit — build FIRST, it's the funnel)
