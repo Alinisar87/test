@@ -1,0 +1,71 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Curve from '../components/ui/Curve.astro';
+import Section from '../components/ui/Section.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+
+const entry = await getEntry('pages', 'thanks');
+if (!entry) throw new Error('Missing content: src/content/pages/thanks.md');
+const c = entry.data as any;
+
+// TODO(Ali): set PUBLIC_GHL_CALENDAR_URL (GHL calendar embed) in Cloudflare env
+const calendarUrl = import.meta.env.PUBLIC_GHL_CALENDAR_URL || '';
+const gtmId = import.meta.env.PUBLIC_GTM_ID || '';
+---
+
+<BaseLayout title={c.title} description={c.description} noindex>
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <p class="kicker">{c.hero.kicker}</p>
+      <h1 class="mt-5">{c.hero.heading}</h1>
+      <p class="lead mt-6 max-w-2xl">{c.hero.lead}</p>
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section>
+    <SectionHeader kicker={c.booking.kicker} title={c.booking.heading} />
+    <div class="mt-8">
+      {
+        calendarUrl ? (
+          <iframe
+            src={calendarUrl}
+            title="Book your walkthrough call"
+            class="h-[700px] w-full rounded-lg border border-offwhite/10 bg-offwhite"
+            loading="lazy"
+          />
+        ) : (
+          <div class="rounded-lg border border-dashed border-offwhite/20 p-10 text-center">
+            <p class="lead mx-auto max-w-xl">{c.booking.placeholder}</p>
+          </div>
+        )
+      }
+    </div>
+  </Section>
+
+  <Section bordered>
+    <SectionHeader kicker={c.timeline.kicker} title={c.timeline.heading} />
+    <ol class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        c.timeline.items.map((step: any, i: number) => (
+          <li>
+            <span class="data text-accent" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-2">{step.title}</h3>
+            <p class="muted mt-2 text-sm leading-relaxed">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  {
+    gtmId && (
+      <script
+        is:inline
+        set:html={`window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'purchase',value:299,currency:'USD'});`}
+      />
+    )
+  }
+</BaseLayout>
