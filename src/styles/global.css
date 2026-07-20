@@ -106,4 +106,53 @@
     font-family: var(--font-mono);
     font-weight: 600;
   }
+
+  /* Rendered-markdown prose (case studies, blog) */
+  .prose-dark {
+    max-width: 42rem;
+    line-height: 1.75;
+  }
+  .prose-dark > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-dark h2 {
+    margin-top: 2em;
+    font-size: var(--text-2xl);
+  }
+  .prose-dark h3 {
+    margin-top: 1.6em;
+  }
+  .prose-dark p,
+  .prose-dark li {
+    opacity: 0.8;
+  }
+  .prose-dark strong {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    opacity: 1;
+  }
+  .prose-dark ol,
+  .prose-dark ul {
+    padding-left: 1.4rem;
+  }
+  .prose-dark ol {
+    list-style: decimal;
+  }
+  .prose-dark ul {
+    list-style: disc;
+  }
+  .prose-dark li + li {
+    margin-top: 0.5em;
+  }
+  .prose-dark blockquote {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1.25rem;
+    font-style: italic;
+  }
+  .prose-dark a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }

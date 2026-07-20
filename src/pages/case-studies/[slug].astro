@@ -1,0 +1,64 @@
+---
+// Reusable case-study template — a new .md in src/content/case-studies/ = a new page, no code edits.
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Curve from '../../components/ui/Curve.astro';
+import Section from '../../components/ui/Section.astro';
+import StatTile from '../../components/ui/StatTile.astro';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('caseStudies');
+  return studies.map((study) => ({ params: { slug: study.id }, props: { study } }));
+}
+
+const { study } = Astro.props;
+const { Content } = await render(study);
+---
+
+<BaseLayout title={study.data.title} description={study.data.description} noindex={study.data.draft}>
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <p class="kicker">{study.data.kicker}</p>
+      <h1 class="mt-5">{study.data.title}</h1>
+      <p class="lead mt-6">{study.data.dek}</p>
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section padding="md">
+    <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+      {study.data.metrics.map((m) => <StatTile value={m.value} label={m.label} />)}
+    </div>
+  </Section>
+
+  <Section bordered>
+    <div class="grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-start">
+      <div class="prose-dark">
+        <Content />
+      </div>
+      <div class="lg:sticky lg:top-8">
+        <Curve
+          variant="chart"
+          ceilingLabel="the ceiling"
+          subLabel="marginal ROAS crosses 1.0"
+          xLabel="monthly ad spend →"
+          yLabel="← profit"
+          ariaLabel="Illustration of the account's spend curve: profit rises with ad spend, then flattens past the ceiling"
+        />
+      </div>
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <h2>{study.data.cta.heading}</h2>
+      <div class="mt-8">
+        <Button href="/audit" size="lg">{study.data.cta.label}</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
