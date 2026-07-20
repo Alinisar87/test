@@ -1,64 +1,97 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
 import Curve from '../components/ui/Curve.astro';
 import Section from '../components/ui/Section.astro';
-import StatTile from '../components/ui/StatTile.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
 
-const facts = [
-  { value: '$299', label: 'flat-fee Profit Curve Audit — no retainer required to start' },
-  { value: '5 days', label: 'from account access to your curve, delivered on a walkthrough call' },
-  { value: 'mROAS', label: 'the one number we optimize: marginal return on the next dollar, not blended ROAS' },
-];
+const entry = await getEntry('pages', 'home');
+if (!entry) throw new Error('Missing content: src/content/pages/home.md');
+const c = entry.data as any;
 ---
 
-<BaseLayout
-  title="Seven Figures Lab — Find your ad-spend ceiling, then move it"
-  description="We show you the exact spend level where your next dollar stops making money — then move the ceiling. Profit-first reporting from a chartered-accountant-led team."
->
+<BaseLayout title={c.title} description={c.description}>
   <section class="relative overflow-hidden">
     <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-20 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:pb-24 lg:pt-28">
       <div>
-        <p class="kicker">Performance marketing for ecom founders</p>
-        <h1 class="mt-5 max-w-2xl text-4xl sm:text-5xl lg:text-6xl">
-          Every ad account has a ceiling. We find yours <span class="text-accent">to the dollar</span> — then move it.
-        </h1>
-        <p class="lead mt-6 max-w-xl">
-          Profit-first reporting from a chartered-accountant-led team, not screenshot ROAS. The
-          Profit Curve Audit shows the exact spend level where your next dollar stops making money.
-        </p>
+        <p class="kicker">{c.hero.kicker}</p>
+        <h1 class="mt-5 max-w-2xl text-4xl sm:text-5xl lg:text-6xl">{c.hero.heading}</h1>
+        <p class="lead mt-6 max-w-xl">{c.hero.lead}</p>
         <div class="mt-8 flex flex-wrap items-center gap-4">
-          <Button href="/audit" size="lg">Get the $299 Audit</Button>
-          <Button href="/case-studies/shopify-roas-ceiling" variant="secondary" size="lg">
-            See it on a real account
-          </Button>
+          <Button href="/audit" size="lg">{c.hero.cta}</Button>
+          <p class="muted font-mono text-xs">{c.hero.ctaNote}</p>
         </div>
-        <p class="mt-6 font-mono text-xs text-offwhite/60">
-          Site under construction — the audit page ships first.
-        </p>
       </div>
-
       <Curve
         variant="chart"
-        ceilingLabel="your ceiling"
-        subLabel="marginal ROAS crosses 1.0"
-        xLabel="monthly ad spend →"
-        yLabel="← profit"
-        ariaLabel="Illustration: profit rises with ad spend, then flattens at the ceiling — the point where marginal return crosses zero"
+        ceilingLabel={c.hero.chart.ceilingLabel}
+        subLabel={c.hero.chart.subLabel}
+        xLabel={c.hero.chart.xLabel}
+        yLabel={c.hero.chart.yLabel}
+        ariaLabel={c.hero.chart.ariaLabel}
       >
-        <span slot="caption">
-          Profit rises with ad spend, then flattens. The audit finds the exact spend level where
-          the next dollar stops making money.
-        </span>
+        <span slot="caption">{c.hero.chart.caption}</span>
       </Curve>
     </div>
   </section>
 
   <Curve variant="divider" />
 
-  <Section padding="md">
-    <div class="grid gap-2 md:grid-cols-3 md:gap-10">
-      {facts.map((fact) => <StatTile value={fact.value} label={fact.label} />)}
+  <Section>
+    <SectionHeader kicker={c.curveSteps.kicker} title={c.curveSteps.heading} lead={c.curveSteps.lead} />
+    <ol class="mt-10 grid gap-8 md:grid-cols-3">
+      {
+        c.curveSteps.items.map((item: any, i: number) => (
+          <li>
+            <span class="data text-accent" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="mt-2">{item.title}</h3>
+            <p class="muted mt-2 leading-relaxed">{item.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section bordered>
+    <SectionHeader kicker={c.whyUs.kicker} title={c.whyUs.heading} />
+    <div class="mt-10 grid gap-8 md:grid-cols-3">
+      {
+        c.whyUs.items.map((item: any) => (
+          <div>
+            <h3>{item.title}</h3>
+            <p class="muted mt-2 leading-relaxed">{item.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section bordered padding="md">
+    <div class="grid gap-10 md:grid-cols-2">
+      {
+        [c.caseTeaser, c.pricingTeaser].map((teaser: any) => (
+          <div class="flex flex-col items-start rounded-lg border border-offwhite/10 p-8">
+            <p class="kicker">{teaser.kicker}</p>
+            <h3 class="mt-3">{teaser.heading}</h3>
+            <p class="muted mt-3 leading-relaxed">{teaser.body}</p>
+            <Button href={teaser.href} variant="secondary" class="mt-6">
+              {teaser.cta}
+            </Button>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <h2>{c.finalCta.heading}</h2>
+      <div class="mt-8">
+        <Button href={c.finalCta.href} size="lg">{c.finalCta.cta}</Button>
+      </div>
     </div>
   </Section>
 </BaseLayout>
