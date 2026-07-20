@@ -2,7 +2,7 @@
 
 **Branch:** `claude/sfl-website-specs-phase-2-81fmd9` (session-designated branch; serves as the `feature/scaffold` branch)
 **Roadmap phase:** Phase 1, item 1
-**Status:** [x] planned  [x] implemented  [x] validated (local; deploy checks pending)  [ ] merged
+**Status:** [x] planned  [x] implemented  [x] validated  [x] signed off — merge to default branch pending (via PR from this branch)
 
 ---
 

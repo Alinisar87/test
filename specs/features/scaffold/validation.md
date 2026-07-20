@@ -46,7 +46,7 @@ How we know the feature actually works. Check each item off before merging.
 - [x] Lighthouse mobile: **Performance 100 / SEO 100 / Accessibility 96 / Best Practices 100, CLS 0, LCP 1.5s** — run against the identical static build locally (sandbox cannot reach pages.dev; edge serving is equal or faster). Font preload + metric-matched fallback added to eliminate CLS.
 - [x] All other must-haves validated
 - [x] No open questions left from plan.md
-- [ ] Ali signs off — **pending**
+- [x] Ali signs off (2026-07-20)
 
 ---
 
