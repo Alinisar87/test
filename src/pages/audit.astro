@@ -13,9 +13,30 @@ const c = entry.data as any;
 
 // TODO(Ali): set PUBLIC_STRIPE_AUDIT_URL once the Stripe payment link exists
 const stripeUrl = import.meta.env.PUBLIC_STRIPE_AUDIT_URL || '#';
+
+// Structured data generated from the same frontmatter that renders the page (single source of truth)
+const serviceSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Profit Curve Audit',
+  description: c.description,
+  provider: { '@type': 'Organization', name: 'Seven Figures Lab', url: Astro.site?.toString() },
+  offers: { '@type': 'Offer', price: '299', priceCurrency: 'USD' },
+});
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: c.faq.items.map((item: any) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+});
 ---
 
 <BaseLayout title={c.title} description={c.description}>
+  <script type="application/ld+json" set:html={serviceSchema} />
+  <script type="application/ld+json" set:html={faqSchema} />
   <Section padding="lg">
     <div class="max-w-3xl">
       <p class="kicker">{c.hero.kicker}</p>
