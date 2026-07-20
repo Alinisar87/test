@@ -55,6 +55,6 @@ Initialize an Astro project with Tailwind at the repo root, alongside the existi
 - **Blocked by:** nothing (Cloudflare/domain setup can happen in parallel)
 
 ## Open Questions to Resolve Before Implementation
-- [ ] `tech-stack.md` says **Astro 4**, but Astro 5 is current stable (better image handling, faster builds). Recommend Astro 5 + updating tech-stack.md in the same commit. OK?
-- [ ] Font families are unspecified. Recommendation for "analytical, numbers over adjectives" tone: **Inter** (UI/body, tabular numerals) + **JetBrains Mono** (numbers/data accents). Confirm or name your pick.
-- [ ] `tech-stack.md` names the repo `sevenfigureslab-site`, but we're building in `alinisar87/test`. Fine for now (update tech-stack.md), or will this move to a new repo before Cloudflare is connected?
+- [x] Astro version → **Astro 5** (Ali approved 2026-07-20; tech-stack.md updated)
+- [x] Fonts → **Inter + JetBrains Mono** (Ali approved 2026-07-20; tech-stack.md updated)
+- [x] Repo → **stay in `Alinisar87/test` for now**, migrate later if needed (Ali approved 2026-07-20; tech-stack.md updated)

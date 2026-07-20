@@ -4,16 +4,16 @@
 
 | Layer | Choice | Why |
 |---|---|---|
-| Framework | **Astro 4** | Content-heavy marketing site → zero-JS by default, easiest path to 95+ PageSpeed. Islands available if needed. (Next.js rejected: SSR complexity buys nothing here.) |
+| Framework | **Astro 5** | Content-heavy marketing site → zero-JS by default, easiest path to 95+ PageSpeed. Islands available if needed. (Next.js rejected: SSR complexity buys nothing here.) |
 | Styling | Tailwind CSS | Speed of iteration; Claude Code works well with it |
 | Hosting | **Cloudflare Pages** | Free, global edge, fast for PK/GCC + US visitors alike |
 | Forms | Native form → **GHL inbound webhook/form endpoint** | Leads land directly in the Seven Figures Lab GHL pipeline, tagged by `utm_source` + page |
 | Checkout ($299 audit) | Stripe Payment Link (v1) | Zero build cost; upgrade to embedded checkout only if conversion data justifies it |
 | Booking | GHL calendar embed on thank-you page | Audit walkthrough call self-schedules |
 | Analytics | GA4 + Meta Pixel via **GTM** | One container; agency must practice what it preaches on clean tagging |
-| Fonts | Self-hosted (fontsource), max 2 families | No render-blocking Google Fonts requests |
+| Fonts | Self-hosted (fontsource): **Inter** (UI/body, tabular numerals) + **JetBrains Mono** (numbers/data accents) | No render-blocking Google Fonts requests |
 | Images | Astro `<Image>`, AVIF/WebP | LCP discipline |
-| Repo | Git, GitHub private repo `sevenfigureslab-site` | CI deploy via Cloudflare Pages Git integration |
+| Repo | Git, GitHub `Alinisar87/test` for now (may migrate to `sevenfigureslab-site` later) | CI deploy via Cloudflare Pages Git integration |
 
 ## Constraints
 - Lighthouse mobile: Performance ≥ 95, SEO ≥ 95, Accessibility ≥ 90 — validated per feature, not at the end
