@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Curve from '../components/ui/Curve.astro';
+import Section from '../components/ui/Section.astro';
+import StatTile from '../components/ui/StatTile.astro';
 
 const facts = [
   { value: '$299', label: 'flat-fee Profit Curve Audit — no retainer required to start' },
@@ -15,125 +19,46 @@ const facts = [
   <section class="relative overflow-hidden">
     <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-20 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:pb-24 lg:pt-28">
       <div>
-        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-          Performance marketing for ecom founders
-        </p>
-        <h1 class="mt-5 max-w-2xl text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+        <p class="kicker">Performance marketing for ecom founders</p>
+        <h1 class="mt-5 max-w-2xl text-4xl sm:text-5xl lg:text-6xl">
           Every ad account has a ceiling. We find yours <span class="text-accent">to the dollar</span> — then move it.
         </h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-offwhite/70">
+        <p class="lead mt-6 max-w-xl">
           Profit-first reporting from a chartered-accountant-led team, not screenshot ROAS. The
           Profit Curve Audit shows the exact spend level where your next dollar stops making money.
         </p>
         <div class="mt-8 flex flex-wrap items-center gap-4">
-          <a
-            href="/audit"
-            class="rounded-md bg-accent px-6 py-3 font-semibold text-charcoal transition hover:bg-accent/85"
-          >
-            Get the $299 Audit
-          </a>
-          <a
-            href="/case-studies/shopify-roas-ceiling"
-            class="rounded-md border border-offwhite/20 px-6 py-3 font-medium text-offwhite/80 transition hover:border-accent hover:text-accent"
-          >
+          <Button href="/audit" size="lg">Get the $299 Audit</Button>
+          <Button href="/case-studies/shopify-roas-ceiling" variant="secondary" size="lg">
             See it on a real account
-          </a>
+          </Button>
         </div>
-        <p class="mt-6 font-mono text-xs text-offwhite/40">
+        <p class="mt-6 font-mono text-xs text-offwhite/60">
           Site under construction — the audit page ships first.
         </p>
       </div>
 
-      <figure class="curve-figure select-none" aria-hidden="false">
-        <svg
-          viewBox="0 0 560 360"
-          role="img"
-          aria-label="Illustration: profit rises with ad spend, then flattens at the ceiling — the point where marginal return crosses zero"
-          class="w-full"
-        >
-          <defs>
-            <linearGradient id="curve-fill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#2AD17E" stop-opacity="0.22"></stop>
-              <stop offset="100%" stop-color="#2AD17E" stop-opacity="0"></stop>
-            </linearGradient>
-          </defs>
-
-          <!-- axes -->
-          <line x1="48" y1="20" x2="48" y2="308" stroke="#F7F7F5" stroke-opacity="0.18" stroke-width="1"></line>
-          <line x1="48" y1="308" x2="540" y2="308" stroke="#F7F7F5" stroke-opacity="0.18" stroke-width="1"></line>
-
-          <!-- gridlines -->
-          {[92, 164, 236].map((y) => (
-            <line x1="48" y1={y} x2="540" y2={y} stroke="#F7F7F5" stroke-opacity="0.05" stroke-width="1"></line>
-          ))}
-
-          <!-- area under curve -->
-          <path
-            d="M 48 290 C 150 274, 216 156, 312 108 C 380 74, 462 62, 540 58 L 540 308 L 48 308 Z"
-            fill="url(#curve-fill)"
-          ></path>
-
-          <!-- the curve -->
-          <path
-            class="curve-path"
-            d="M 48 290 C 150 274, 216 156, 312 108 C 380 74, 462 62, 540 58"
-            fill="none"
-            stroke="#2AD17E"
-            stroke-width="3"
-            stroke-linecap="round"
-          ></path>
-
-          <!-- ceiling marker -->
-          <line x1="360" y1="88" x2="360" y2="308" stroke="#2AD17E" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 5"></line>
-          <circle cx="360" cy="88" r="5.5" fill="#111318" stroke="#2AD17E" stroke-width="3"></circle>
-
-          <!-- labels -->
-          <text x="352" y="66" text-anchor="end" fill="#F7F7F5" font-size="14" font-family="'JetBrains Mono Variable', monospace">
-            your ceiling
-          </text>
-          <text x="352" y="84" text-anchor="end" fill="#F7F7F5" fill-opacity="0.55" font-size="11" font-family="'JetBrains Mono Variable', monospace">
-            marginal ROAS crosses 1.0
-          </text>
-          <text x="540" y="330" text-anchor="end" fill="#F7F7F5" fill-opacity="0.45" font-size="11" font-family="'JetBrains Mono Variable', monospace">
-            monthly ad spend →
-          </text>
-          <text x="40" y="30" text-anchor="end" fill="#F7F7F5" fill-opacity="0.45" font-size="11" font-family="'JetBrains Mono Variable', monospace" transform="rotate(-90 40 30) translate(-8 0)">
-            ← profit
-          </text>
-        </svg>
-        <figcaption class="sr-only">
+      <Curve
+        variant="chart"
+        ceilingLabel="your ceiling"
+        subLabel="marginal ROAS crosses 1.0"
+        xLabel="monthly ad spend →"
+        yLabel="← profit"
+        ariaLabel="Illustration: profit rises with ad spend, then flattens at the ceiling — the point where marginal return crosses zero"
+      >
+        <span slot="caption">
           Profit rises with ad spend, then flattens. The audit finds the exact spend level where
           the next dollar stops making money.
-        </figcaption>
-      </figure>
+        </span>
+      </Curve>
     </div>
   </section>
 
-  <section class="border-t border-offwhite/10">
-    <div class="mx-auto grid max-w-6xl gap-px overflow-hidden px-4 py-12 sm:px-6 md:grid-cols-3 md:gap-10">
-      {
-        facts.map((fact) => (
-          <div class="py-4">
-            <p class="font-mono text-3xl font-semibold text-accent">{fact.value}</p>
-            <p class="mt-2 text-sm leading-relaxed text-offwhite/60">{fact.label}</p>
-          </div>
-        ))
-      }
+  <Curve variant="divider" />
+
+  <Section padding="md">
+    <div class="grid gap-2 md:grid-cols-3 md:gap-10">
+      {facts.map((fact) => <StatTile value={fact.value} label={fact.label} />)}
     </div>
-  </section>
+  </Section>
 </BaseLayout>
-
-<style>
-  @media (prefers-reduced-motion: no-preference) {
-    .curve-path {
-      stroke-dasharray: 700;
-      stroke-dashoffset: 700;
-      animation: draw 1.6s ease-out 0.2s forwards;
-    }
-    @keyframes draw {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-  }
-</style>

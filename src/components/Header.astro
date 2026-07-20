@@ -1,4 +1,7 @@
 ---
+// Site header: desktop inline nav; below md a CSS-only slide-down panel (checkbox :checked, zero JS).
+import Button from './ui/Button.astro';
+
 const links = [
   { href: '/pricing', label: 'Pricing' },
   { href: '/case-studies/shopify-roas-ceiling', label: 'Case Study' },
@@ -8,40 +11,90 @@ const links = [
 ---
 
 <header class="border-b border-offwhite/10">
-  <div
-    class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-4 py-4 sm:px-6"
-  >
-    <a href="/" class="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight text-offwhite">
-      <svg viewBox="0 0 32 32" class="h-6 w-6" aria-hidden="true">
-        <rect width="32" height="32" rx="6" fill="none" stroke="#2AD17E" stroke-opacity="0.35"></rect>
-        <path
-          d="M4 26 C 10 24, 14 14, 18 10 C 21 7, 25 6, 28 6"
-          fill="none"
-          stroke="#2AD17E"
-          stroke-width="3"
-          stroke-linecap="round"
-        ></path>
-      </svg>
-      Seven Figures <span class="text-accent">Lab</span>
-    </a>
-    <nav aria-label="Main" class="flex flex-wrap items-center gap-x-5 gap-y-1">
-      <ul class="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-offwhite/80">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <input type="checkbox" id="nav-toggle" class="peer sr-only" aria-label="Open navigation menu" />
+
+    <div class="flex items-center justify-between gap-4 py-4">
+      <a
+        href="/"
+        class="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight text-offwhite"
+      >
+        <svg viewBox="0 0 32 32" class="h-6 w-6" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="none" stroke="#2AD17E" stroke-opacity="0.35"></rect>
+          <path
+            d="M4 26 C 10 24, 14 14, 18 10 C 21 7, 25 6, 28 6"
+            fill="none"
+            stroke="#2AD17E"
+            stroke-width="3"
+            stroke-linecap="round"
+          ></path>
+        </svg>
+        Seven Figures <span class="text-accent">Lab</span>
+      </a>
+
+      <div class="flex items-center gap-3 md:gap-5">
+        <nav aria-label="Main" class="hidden md:block">
+          <ul class="flex items-center gap-x-5 text-sm text-offwhite/80">
+            {
+              links.map((link) => (
+                <li>
+                  <a href={link.href} class="transition-colors hover:text-accent">
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <Button href="/audit" size="md">Get the Audit</Button>
+        <label
+          for="nav-toggle"
+          class="nav-toggle-label flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-md md:hidden"
+          aria-hidden="true"
+        >
+          <span class="nav-bar block h-0.5 w-5 bg-offwhite transition"></span>
+          <span class="nav-bar block h-0.5 w-5 bg-offwhite transition"></span>
+          <span class="nav-bar block h-0.5 w-5 bg-offwhite transition"></span>
+        </label>
+      </div>
+    </div>
+
+    <nav
+      aria-label="Main mobile"
+      class="invisible max-h-0 overflow-hidden pb-0 transition-all duration-300 peer-checked:visible peer-checked:max-h-96 peer-checked:pb-4 md:hidden"
+    >
+      <ul class="flex flex-col border-t border-offwhite/10 pt-2">
         {
           links.map((link) => (
             <li>
-              <a href={link.href} class="transition-colors hover:text-accent">
+              <a
+                href={link.href}
+                class="block px-2 py-3 text-base text-offwhite/80 transition-colors hover:text-accent"
+              >
                 {link.label}
               </a>
             </li>
           ))
         }
       </ul>
-      <a
-        href="/audit"
-        class="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-charcoal transition hover:bg-accent/85"
-      >
-        Get the Audit
-      </a>
     </nav>
   </div>
 </header>
+
+<style>
+  /* Focus ring on the visible label when the (sr-only) checkbox has keyboard focus */
+  .peer:focus-visible ~ div .nav-toggle-label {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  /* Hamburger → X when open */
+  .peer:checked ~ div .nav-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .peer:checked ~ div .nav-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .peer:checked ~ div .nav-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+</style>
