@@ -1,0 +1,58 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Curve from '../components/ui/Curve.astro';
+import Section from '../components/ui/Section.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import StatTile from '../components/ui/StatTile.astro';
+
+const entry = await getEntry('pages', 'about');
+if (!entry) throw new Error('Missing content: src/content/pages/about.md');
+const c = entry.data as any;
+---
+
+<BaseLayout title={c.title} description={c.description}>
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <p class="kicker">{c.hero.kicker}</p>
+      <h1 class="mt-5">{c.hero.heading}</h1>
+      <p class="lead mt-6 max-w-2xl">{c.hero.lead}</p>
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section>
+    <SectionHeader kicker={c.credentials.kicker} title={c.credentials.heading} />
+    <div class="mt-8 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+      {c.credentials.items.map((item: any) => <StatTile value={item.value} label={item.label} />)}
+    </div>
+  </Section>
+
+  <Section bordered>
+    <div class="grid gap-12 md:grid-cols-2">
+      <div>
+        <p class="kicker">{c.model.kicker}</p>
+        <h2 class="mt-4">{c.model.heading}</h2>
+        <p class="lead mt-4">{c.model.body}</p>
+      </div>
+      <div>
+        <p class="kicker">{c.name.kicker}</p>
+        <h2 class="mt-4">{c.name.heading}</h2>
+        <p class="lead mt-4">{c.name.body}</p>
+      </div>
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <h2>{c.finalCta.heading}</h2>
+      <div class="mt-8">
+        <Button href="/audit" size="lg">{c.finalCta.cta}</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
