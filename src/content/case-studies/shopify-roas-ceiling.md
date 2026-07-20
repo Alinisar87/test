@@ -8,7 +8,7 @@ dek: 'Blended ROAS said keep scaling. The curve said the account had crossed its
 draft: true
 cta:
   heading: 'Want this analysis on your account?'
-  label: 'Get the $299 Profit Curve Audit'
+  label: 'Get Your Profit Curve Audit'
 metrics:
   - value: '$[X]/mo'
     label: 'ad spend at the time of analysis'

@@ -1,5 +1,5 @@
 ---
-// Usage: <Button href="/audit" variant="primary" size="lg">Get the $299 Audit</Button>
+// Usage: <Button href="/audit" variant="primary" size="lg">Get Your Audit</Button>
 // Renders <a> when href is given, <button> otherwise.
 interface Props {
   href?: string;
@@ -13,7 +13,7 @@ const Tag = href ? 'a' : 'button';
 
 const variants = {
   primary:
-    'bg-accent font-semibold text-charcoal shadow-[0_0_28px_rgb(42_209_126/0.28)] hover:bg-accent/90 hover:shadow-[0_0_36px_rgb(42_209_126/0.40)] hover:-translate-y-px active:translate-y-0',
+    'bg-accent-deep font-semibold text-white shadow-[0_0_28px_rgb(42_107_245/0.28)] hover:bg-accent-deep/90 hover:shadow-[0_0_36px_rgb(42_107_245/0.40)] hover:-translate-y-px active:translate-y-0',
   secondary:
     'border border-current/25 font-medium opacity-80 hover:border-accent hover:text-accent hover:opacity-100 hover:-translate-y-px active:translate-y-0',
 };

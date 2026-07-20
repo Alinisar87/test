@@ -28,5 +28,5 @@ name:
   body: "Because the ceiling problem lives in the seven-figure range. Under ~$200K/year, ads either work or they don't. Past $3M, you have a finance team. In between — where most Shopify and Amazon founders actually are — every scaling decision is made half-blind. That's the lab's entire focus: the founders for whom finding one number on a curve is worth real money."
 finalCta:
   heading: 'See the methodology on your own numbers.'
-  cta: 'Get the $299 Audit'
+  cta: 'Get Your Audit'
 ---

@@ -48,8 +48,8 @@ tiers:
       highlighted: false
 audit:
   kicker: 'The deep-dive'
-  heading: 'Profit Curve Audit — $299 one-off'
-  body: "Want the full diagnostic before (or instead of) a package? The audit plots your marginal ROAS curve from 90 days of data, finds your ad-spend ceiling to the dollar, and hands you the plan to move it — walkthrough call included. Credited against your first month if you continue with any package."
+  heading: 'The Profit Curve Audit — the deep-dive diagnostic'
+  body: "Want the full diagnostic before (or instead of) a package? The audit plots your marginal ROAS curve from 90 days of data, finds your ad-spend ceiling to the dollar, and hands you the plan to move it — walkthrough call included. Flat fee quoted up front; credited against your first month if you continue with any package."
   cta: 'Get the Audit'
 faq:
   kicker: 'Fair questions'
@@ -60,10 +60,10 @@ faq:
     - q: 'Am I locked into a contract?'
       a: 'No. Every package is a 30-day rolling agreement. Cancel any month, and every account we build — ads, analytics, tag manager — is created under your ownership from day one, so you keep everything.'
     - q: 'Which package fits me?'
-      a: "Rough guide by ad spend: under $3K/month → Launch. $3K–$10K → Growth. $10K–$50K → Scale. Not sure, or scaling past $50K? Start with the $299 audit and the numbers will tell you."
+      a: "Rough guide by ad spend: under $3K/month → Launch. $3K–$10K → Growth. $10K–$50K → Scale. Not sure, or scaling past $50K? Start with the audit and the numbers will tell you."
     - q: 'Do I need the audit first?'
-      a: "No — packages stand on their own. The audit is for founders who want the full ceiling diagnostic up front. If you take it and then start a package, the $299 is credited to your first month."
+      a: "No — packages stand on their own. The audit is for founders who want the full ceiling diagnostic up front. If you take it and then start a package, the audit fee is credited to your first month."
 finalCta:
   heading: 'Pick a package, or let the audit pick it for you.'
-  cta: 'Get the $299 Audit'
+  cta: 'Get Your Audit'
 ---

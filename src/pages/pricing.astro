@@ -39,7 +39,7 @@ const c = entry.data as any;
             ]}
           >
             {tier.badge && (
-              <span class="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 font-mono text-xs font-semibold text-charcoal">
+              <span class="absolute -top-3 left-8 rounded-full bg-accent-deep px-3 py-1 font-mono text-xs font-semibold text-white">
                 {tier.badge}
               </span>
             )}
@@ -52,7 +52,7 @@ const c = entry.data as any;
             <ul class="mt-6 flex-1 space-y-2 text-sm">
               {tier.includes.map((line: string) => (
                 <li class="flex gap-2">
-                  <span class={tier.highlighted ? 'text-accent' : 'text-accent-deep'} aria-hidden="true">
+                  <span class={tier.highlighted ? 'text-accent-lite' : 'text-accent-deep'} aria-hidden="true">
                     —
                   </span>
                   <span class="opacity-80">{line}</span>
@@ -70,7 +70,7 @@ const c = entry.data as any;
   </Section>
 
   <Section padding="md">
-    <div class="rounded-lg border border-accent/40 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent p-8 shadow-[0_0_60px_rgb(42_209_126/0.08)] sm:p-10">
+    <div class="rounded-lg border border-accent/40 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent p-8 shadow-[0_0_60px_rgb(42_107_245/0.08)] sm:p-10">
       <p class="kicker">{c.audit.kicker}</p>
       <h2 class="mt-4">{c.audit.heading}</h2>
       <p class="lead mt-4 max-w-2xl">{c.audit.body}</p>

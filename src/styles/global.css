@@ -21,10 +21,12 @@
 
 @theme {
   --color-charcoal: #111318;
-  --color-accent: #2ad17e;
-  /* Contrast-safe accent for text on offwhite sections (#2ad17e fails WCAG on light bg) */
-  --color-accent-deep: #127246;
+  --color-accent: #2a6bf5;
+  /* Contrast-safe accent for text on offwhite sections (#2a6bf5 fails WCAG on light bg) */
+  --color-accent-deep: #1D4ED8;
   --color-offwhite: #f7f7f5;
+  --color-accent-lite: #8ab0ff;
+  --color-green: #2ad17e;
   --color-amber: #ffc24b;
   --color-coral: #ff6b57;
   --color-sky: #38bdf8;
@@ -78,8 +80,8 @@
   }
 
   ::selection {
-    background-color: var(--color-accent);
-    color: var(--color-charcoal);
+    background-color: var(--color-accent-deep);
+    color: var(--color-offwhite);
   }
 
   :focus-visible {
@@ -96,7 +98,7 @@
     inset: 0;
     pointer-events: none;
     background-image:
-      radial-gradient(640px 420px at 80% 25%, rgb(42 209 126 / 0.16), transparent 65%),
+      radial-gradient(640px 420px at 80% 25%, rgb(42 107 245 / 0.16), transparent 65%),
       radial-gradient(520px 360px at 8% 80%, rgb(255 194 75 / 0.18), transparent 60%),
       radial-gradient(420px 300px at 55% 110%, rgb(56 189 248 / 0.12), transparent 60%),
       linear-gradient(rgb(17 19 24 / 0.035) 1px, transparent 1px),
@@ -118,10 +120,10 @@
     letter-spacing: 0.2em;
     color: var(--color-accent-deep);
   }
-  /* On dark sections the bright accent is the contrast-safe one */
+  /* On dark sections a lighter blue is the contrast-safe one */
   .bg-charcoal .kicker,
   footer .kicker {
-    color: var(--color-accent);
+    color: var(--color-accent-lite);
   }
 
   /* Marker highlight for key headline phrases */

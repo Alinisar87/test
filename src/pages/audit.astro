@@ -22,7 +22,6 @@ const serviceSchema = JSON.stringify({
   name: 'Profit Curve Audit',
   description: c.description,
   provider: { '@type': 'Organization', name: 'Seven Figures Lab', url: Astro.site?.toString() },
-  offers: { '@type': 'Offer', price: '299', priceCurrency: 'USD' },
 });
 const faqSchema = JSON.stringify({
   '@context': 'https://schema.org',
@@ -72,7 +71,7 @@ const faqSchema = JSON.stringify({
   </Section>
 
   <Section padding="md">
-    <div class="rounded-lg border border-accent/40 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent p-8 shadow-[0_0_60px_rgb(42_209_126/0.08)] sm:p-10">
+    <div class="rounded-lg border border-accent/40 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent p-8 shadow-[0_0_60px_rgb(42_107_245/0.08)] sm:p-10">
       <p class="kicker">{c.guarantee.kicker}</p>
       <h2 class="mt-4">{c.guarantee.heading}</h2>
       <p class="lead mt-4 max-w-2xl">{c.guarantee.body}</p>

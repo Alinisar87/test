@@ -22,10 +22,10 @@
 - All copy lives in `src/content/` as markdown/MDX — copy edits must never require touching components
 - Env vars for GHL endpoint + GTM ID; nothing hardcoded
 
-## Brand constants (v2 — bright rebrand 2026-07-20, KlientBoost-inspired; v1 dark theme retired)
+## Brand constants (v3 — blue palette pass 2026-07-20 night, per Ali "replicate including color"; v2 green retired)
 - Light-first: background off-white `#F7F7F5`, ink charcoal `#111318`
-- Primary accent: electric green `#2AD17E` (buttons/graphics) with deep green `#127246` for accent TEXT on light bg (contrast)
-- Support brights (cards, blobs, highlights): amber `#FFC24B`, coral `#FF6B57`, sky `#38BDF8`, violet `#7C5CFF`
+- Primary accent: royal blue `#2A6BF5` (graphics) · deep blue `#1D4ED8` (buttons w/ white text, accent text on light) · light blue `#8AB0FF` (accent text on dark)
+- Support brights (cards, blobs, highlights): amber `#FFC24B` (headline marker), coral `#FF6B57`, sky `#38BDF8`, violet `#7C5CFF`, green `#2AD17E` (support only)
 - Dark charcoal retained as a contrast VARIANT (footer, highlighted pricing tier, optional dark sections)
 - Headline device: amber marker-highlight on key phrases (`.hl`)
 - Tone: energetic + conversion-focused, still numbers-over-adjectives. Inspired by KlientBoost's energy; zero copied assets/copy.

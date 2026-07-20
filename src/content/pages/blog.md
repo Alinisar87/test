@@ -9,9 +9,9 @@ hero:
 empty:
   heading: 'Nothing published yet — on purpose.'
   body: "The first notes are in the audit queue. If you want them when they land, the fastest way is to book an audit — clients hear everything first on their walkthrough calls."
-  cta: 'Get the $299 Audit'
+  cta: 'Get Your Audit'
 post:
   backLabel: '← All notes'
   ctaHeading: 'See this methodology on your own numbers.'
-  ctaLabel: 'Get the $299 Profit Curve Audit'
+  ctaLabel: 'Get Your Profit Curve Audit'
 ---

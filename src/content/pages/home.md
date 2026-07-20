@@ -6,7 +6,7 @@ hero:
   kicker: 'Performance marketing for ecom founders'
   heading: "ROAS dies every time you scale? *There's a curve that explains it.*"
   lead: "Every ad account has a ceiling — the spend level where the next dollar stops making money. Most founders find it by burning cash past it. We find it on a chart, to the dollar, then move it."
-  cta: 'Get the $299 Profit Curve Audit'
+  cta: 'Get Your Profit Curve Audit'
   ctaNote: '5-day delivery · Ceiling Guarantee'
   chart:
     ceilingLabel: 'your ceiling'
@@ -74,11 +74,11 @@ caseTeaser:
 pricingTeaser:
   kicker: 'Pricing'
   heading: 'Every engagement starts with the audit'
-  body: 'No retainer pitch before the numbers. The $299 audit finds your ceiling; if we can move it, retainers start from there — audit fee credited.'
+  body: 'No retainer pitch before the numbers. The audit finds your ceiling; if we can move it, packages start from there — audit fee credited.'
   cta: 'See pricing'
   href: '/pricing'
 finalCta:
   heading: 'Your next dollar of ad spend is either profit or a donation. Find out which.'
-  cta: 'Get the $299 Profit Curve Audit'
+  cta: 'Get Your Profit Curve Audit'
   href: '/audit'
 ---
