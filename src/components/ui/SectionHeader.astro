@@ -1,0 +1,18 @@
+---
+// Usage: <SectionHeader kicker="The method" title="Find the ceiling" lead="One number decides..." />
+// All props optional except title.
+interface Props {
+  kicker?: string;
+  title: string;
+  lead?: string;
+  class?: string;
+}
+
+const { kicker, title, lead, class: className } = Astro.props;
+---
+
+<div class:list={['max-w-2xl', className]}>
+  {kicker && <p class="kicker">{kicker}</p>}
+  <h2 class:list={[kicker && 'mt-4']}>{title}</h2>
+  {lead && <p class="lead mt-4">{lead}</p>}
+</div>

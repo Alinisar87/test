@@ -1,0 +1,14 @@
+---
+// Usage: <StatTile value="$299" label="flat-fee Profit Curve Audit" />
+interface Props {
+  value: string;
+  label: string;
+}
+
+const { value, label } = Astro.props;
+---
+
+<div class="py-4">
+  <p class="data text-3xl text-accent">{value}</p>
+  <p class="muted mt-2 text-sm leading-relaxed">{label}</p>
+</div>

@@ -1,0 +1,26 @@
+---
+// Usage: <Button href="/audit" variant="primary" size="lg">Get the $299 Audit</Button>
+// Renders <a> when href is given, <button> otherwise.
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary';
+  size?: 'md' | 'lg';
+  class?: string;
+}
+
+const { href, variant = 'primary', size = 'md', class: className } = Astro.props;
+const Tag = href ? 'a' : 'button';
+
+const variants = {
+  primary: 'bg-accent font-semibold text-charcoal hover:bg-accent/85',
+  secondary: 'border border-current/25 font-medium opacity-80 hover:border-accent hover:text-accent hover:opacity-100',
+};
+const sizes = {
+  md: 'px-4 py-2 text-sm',
+  lg: 'px-6 py-3',
+};
+---
+
+<Tag href={href} class:list={['inline-block rounded-md transition', variants[variant], sizes[size], className]}>
+  <slot />
+</Tag>
