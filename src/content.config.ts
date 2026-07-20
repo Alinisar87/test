@@ -22,4 +22,15 @@ const caseStudies = defineCollection({
   }),
 });
 
-export const collections = { pages, caseStudies };
+// Blog: publish = drop a .md with draft:false. Zero posts is a valid state.
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    draft: z.boolean().default(true),
+  }),
+});
+
+export const collections = { pages, caseStudies, blog };

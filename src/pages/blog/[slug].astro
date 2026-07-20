@@ -1,0 +1,56 @@
+---
+// Blog post template — a new .md in src/content/blog/ with draft:false = a live post, no code edits.
+import { getCollection, getEntry, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Curve from '../../components/ui/Curve.astro';
+import Section from '../../components/ui/Section.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const pageEntry = await getEntry('pages', 'blog');
+const c = pageEntry?.data as any;
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  noindex={post.data.draft}
+  ogType="article"
+>
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <a href="/blog/" class="muted font-mono text-xs transition-colors hover:text-accent">
+        {c.post.backLabel}
+      </a>
+      <p class="kicker mt-8">{dateFmt.format(post.data.pubDate)}</p>
+      <h1 class="mt-4">{post.data.title}</h1>
+      <p class="lead mt-6">{post.data.description}</p>
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section>
+    <div class="prose-dark">
+      <Content />
+    </div>
+  </Section>
+
+  <Section bordered padding="md">
+    <div class="max-w-3xl">
+      <h2>{c.post.ctaHeading}</h2>
+      <div class="mt-8">
+        <Button href="/audit" size="lg">{c.post.ctaLabel}</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

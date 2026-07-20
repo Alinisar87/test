@@ -1,0 +1,52 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Section from '../../components/ui/Section.astro';
+
+const entry = await getEntry('pages', 'blog');
+if (!entry) throw new Error('Missing content: src/content/pages/blog.md');
+const c = entry.data as any;
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<BaseLayout title={c.title} description={c.description}>
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <p class="kicker">{c.hero.kicker}</p>
+      <h1 class="mt-5">{c.hero.heading}</h1>
+      <p class="lead mt-6 max-w-2xl">{c.hero.lead}</p>
+    </div>
+  </Section>
+
+  <Section bordered>
+    {
+      posts.length === 0 ? (
+        <div class="max-w-2xl rounded-lg border border-dashed border-offwhite/20 p-10">
+          <h2>{c.empty.heading}</h2>
+          <p class="lead mt-4">{c.empty.body}</p>
+          <div class="mt-6">
+            <Button href="/audit">{c.empty.cta}</Button>
+          </div>
+        </div>
+      ) : (
+        <ul class="max-w-3xl divide-y divide-offwhite/10">
+          {posts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}/`} class="group block py-8">
+                <p class="muted font-mono text-xs">{dateFmt.format(post.data.pubDate)}</p>
+                <h2 class="mt-2 transition-colors group-hover:text-accent">{post.data.title}</h2>
+                <p class="muted mt-2 leading-relaxed">{post.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </Section>
+</BaseLayout>
