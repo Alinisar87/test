@@ -4,7 +4,7 @@ title: 'Seven Figures Lab — Find your ad-spend ceiling, then move it'
 description: 'We show you the exact spend level where your next dollar stops making money — then move the ceiling. Profit-first reporting from a chartered-accountant-led team.'
 hero:
   kicker: 'Performance marketing for ecom founders'
-  heading: "ROAS dies every time you scale? There's a curve that explains it."
+  heading: "ROAS dies every time you scale? *There's a curve that explains it.*"
   lead: "Every ad account has a ceiling — the spend level where the next dollar stops making money. Most founders find it by burning cash past it. We find it on a chart, to the dollar, then move it."
   cta: 'Get the $299 Profit Curve Audit'
   ctaNote: '5-day delivery · Ceiling Guarantee'
@@ -15,6 +15,30 @@ hero:
     yLabel: '← profit'
     ariaLabel: 'Illustration: profit rises with ad spend, then flattens at the ceiling — the point where marginal return crosses zero'
     caption: 'Profit rises with ad spend, then flattens. The audit finds the exact spend level where the next dollar stops making money.'
+services:
+  kicker: 'Full service, one rule'
+  heading: 'Every channel we run answers to *marginal profit*'
+  lead: 'Not impressions, not blended ROAS, not screenshots. Each service exists to move one number: the return on your next ad dollar.'
+  items:
+    - name: 'Google Ads'
+      color: 'sky'
+      blurb: 'Search, Shopping, Performance Max — managed to the return on your next dollar, not the account average.'
+    - name: 'Meta & Paid Social'
+      color: 'violet'
+      blurb: 'Meta, Instagram, TikTok — creative testing tied to the curve, not to vanity click-through rates.'
+    - name: 'CRO & Landing Pages'
+      color: 'coral'
+      blurb: 'The cheapest way to move a ceiling is often on the page, not in the ad account.'
+    - name: 'SEO'
+      color: 'amber'
+      blurb: 'Compounding organic traffic that lowers blended acquisition cost while paid does the sprinting.'
+    - name: 'Email & Retention'
+      color: 'accent'
+      blurb: 'Second orders are pure ceiling headroom — flows and campaigns that lift lifetime value.'
+  packagesCard:
+    heading: 'Packages from $199/month'
+    body: '30-day rolling. Your accounts, your ownership, from day one.'
+    cta: 'See pricing'
 curveSteps:
   kicker: 'The curve, in three steps'
   heading: 'Why scaling kills your profitability — and where it stops being your fault'

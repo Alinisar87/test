@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { hl } from '../lib/hl';
 import Button from '../components/ui/Button.astro';
 import Curve from '../components/ui/Curve.astro';
 import FaqItem from '../components/ui/FaqItem.astro';
@@ -40,7 +41,7 @@ const faqSchema = JSON.stringify({
   <Section padding="lg" atmo>
     <div class="max-w-3xl">
       <p class="kicker">{c.hero.kicker}</p>
-      <h1 class="mt-5">{c.hero.heading}</h1>
+      <h1 class="mt-5" set:html={hl(c.hero.heading)} />
       <p class="lead mt-6 max-w-2xl">{c.hero.lead}</p>
       <div class="mt-8 flex flex-wrap items-center gap-4">
         <Button href={stripeUrl} size="lg">{c.hero.cta}</Button>
@@ -57,7 +58,7 @@ const faqSchema = JSON.stringify({
       {
         c.deliverables.items.map((item: any, i: number) => (
           <li class="flex gap-4">
-            <span class="data text-accent" aria-hidden="true">
+            <span class="data text-accent-deep" aria-hidden="true">
               {String(i + 1).padStart(2, '0')}
             </span>
             <div>
@@ -87,7 +88,7 @@ const faqSchema = JSON.stringify({
       {
         c.howItWorks.steps.map((step: any, i: number) => (
           <li>
-            <span class="data text-accent" aria-hidden="true">
+            <span class="data text-accent-deep" aria-hidden="true">
               {String(i + 1).padStart(2, '0')}
             </span>
             <h3 class="mt-2">{step.title}</h3>

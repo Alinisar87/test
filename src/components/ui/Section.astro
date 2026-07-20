@@ -3,14 +3,14 @@
 // Dark charcoal by default; "offwhite" flips to light background with charcoal text.
 // `atmo` adds the chart-paper grid + accent glow backdrop (hero sections).
 interface Props {
-  variant?: 'dark' | 'offwhite';
+  variant?: 'light' | 'dark';
   bordered?: boolean;
   padding?: 'md' | 'lg';
   atmo?: boolean;
   class?: string;
 }
 
-const { variant = 'dark', bordered = false, padding = 'md', atmo = false, class: className } = Astro.props;
+const { variant = 'light', bordered = false, padding = 'md', atmo = false, class: className } = Astro.props;
 const paddings = {
   md: 'py-12 sm:py-16',
   lg: 'py-16 sm:py-24 lg:py-28',
@@ -20,8 +20,8 @@ const paddings = {
 <section
   class:list={[
     atmo && 'relative overflow-hidden',
-    variant === 'offwhite' && 'bg-offwhite text-charcoal',
-    bordered && 'border-t border-offwhite/10',
+    variant === 'dark' && 'bg-charcoal text-offwhite',
+    bordered && 'border-t border-charcoal/10',
     className,
   ]}
 >

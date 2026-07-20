@@ -34,11 +34,11 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID || '';
           <iframe
             src={calendarUrl}
             title="Book your walkthrough call"
-            class="h-[700px] w-full rounded-lg border border-offwhite/10 bg-offwhite"
+            class="h-[700px] w-full rounded-lg border border-charcoal/15 bg-white"
             loading="lazy"
           />
         ) : (
-          <div class="rounded-lg border border-dashed border-offwhite/20 p-10 text-center">
+          <div class="rounded-lg border border-dashed border-charcoal/25 bg-white p-10 text-center">
             <p class="lead mx-auto max-w-xl">{c.booking.placeholder}</p>
           </div>
         )
@@ -52,7 +52,7 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID || '';
       {
         c.timeline.items.map((step: any, i: number) => (
           <li>
-            <span class="data text-accent" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="data text-accent-deep" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <h3 class="mt-2">{step.title}</h3>
             <p class="muted mt-2 text-sm leading-relaxed">{step.body}</p>
           </li>

@@ -1,62 +1,69 @@
 ---
-# DRAFT COPY — tier names, PRICES, and inclusions are Claude's draft (reasoned from
-# "Dubai output at half the fee"). Ali MUST replace with offer-doc numbers before real traffic.
-title: 'Pricing — every engagement starts with the audit'
-description: 'Transparent retainers for ecom founders. Every engagement starts with the $299 Profit Curve Audit — the fee is credited when you continue.'
+# DRAFT COPY — package names, PRICES, inclusions, and policy claims are Claude's draft
+# (SoftCrust-style entry pricing per Ali 2026-07-20). Ali reviews before real traffic.
+title: 'Pricing — packages from $199/month, no lock-in'
+description: 'Published monthly packages from $199/month. 30-day rolling agreements, your accounts under your ownership from day one, and a chartered-accountant-led team on every account.'
 intro:
   kicker: 'Pricing'
-  heading: 'Every engagement starts with the audit.'
-  lead: "No discovery-call theater, no proposal before the numbers. The $299 Profit Curve Audit finds your ceiling first. If we believe we can move it, you'll see exactly which tier fits — and the audit fee is credited against your first month."
-  cta: 'Start with the $299 Audit'
+  heading: 'Agency-grade ads management, *from $199/month*'
+  lead: "No custom-quote theater. Published packages, 30-day rolling agreements, and every account — ads, analytics, tracking — created under your ownership from day one. Cancel any month; keep everything."
+  cta: 'Start with a package'
 tiers:
-  kicker: 'Retainers'
-  heading: 'Three tiers. One methodology.'
-  note: 'Draft pricing — final numbers confirmed on your walkthrough call.'
+  kicker: 'Monthly packages'
+  heading: 'Three packages. One methodology.'
+  note: 'Draft pricing — confirmed on your kickoff call. Every package runs on the marginal-ROAS methodology.'
   items:
-    - name: 'Curve Control'
-      price: '$1,250'
+    - name: 'Launch'
+      price: '$199'
       cadence: '/month'
-      fit: 'For founders at $3K–$10K/month ad spend who need the ceiling watched while they run the business.'
+      fit: 'One channel done properly — for founders under ~$3K/month ad spend getting their first structured setup.'
       includes:
-        - 'Monthly marginal ROAS curve refresh'
-        - 'Profit-first reporting pack (P&L-reconciled)'
-        - 'Budget reallocation plan each month'
-        - 'Async support, 2-business-day SLA'
+        - 'Google Ads OR Meta — full setup + management'
+        - 'Conversion tracking built and verified'
+        - 'Monthly profit-first report (not a dashboard export)'
+        - '30-day rolling, cancel any month'
       highlighted: false
-    - name: 'Move the Ceiling'
-      price: '$2,400'
+    - name: 'Growth'
+      price: '$549'
       cadence: '/month'
-      fit: 'For founders at $10K–$30K/month spend ready to actively push the ceiling higher, not just respect it.'
+      fit: 'Two channels + the curve watched monthly — for founders at $3K–$10K/month spend.'
       includes:
-        - 'Everything in Curve Control'
-        - 'Full ad account management (Meta + Google)'
-        - 'Creative testing framework tied to marginal ROAS'
-        - 'Bi-weekly strategy call'
-        - 'Landing page / offer CRO recommendations'
+        - 'Google Ads AND Meta/TikTok management'
+        - 'Monthly marginal-ROAS curve refresh'
+        - 'Landing page / CRO recommendations'
+        - 'Bi-weekly reporting call'
+        - 'Everything in Launch'
       highlighted: true
-      badge: 'Most common'
-    - name: 'Growth Partner'
-      price: '$4,000'
+      badge: 'Most popular'
+    - name: 'Scale'
+      price: '$1,199'
       cadence: '/month'
-      fit: 'For founders past $30K/month spend where every ceiling point is five figures of monthly profit.'
+      fit: 'All channels, weekly steering — for founders at $10K–$50K/month spend where every ceiling point is real money.'
       includes:
-        - 'Everything in Move the Ceiling'
-        - 'Weekly curve monitoring + spend steering'
+        - 'All paid channels + SEO & email oversight'
+        - 'Weekly curve monitoring and spend steering'
         - 'Finance-grade monthly board pack'
-        - 'Direct founder access (no account-manager relay)'
-        - 'Quarterly profitability deep-dive'
+        - 'Direct founder access — no account-manager relay'
+        - 'Everything in Growth'
       highlighted: false
+audit:
+  kicker: 'The deep-dive'
+  heading: 'Profit Curve Audit — $299 one-off'
+  body: "Want the full diagnostic before (or instead of) a package? The audit plots your marginal ROAS curve from 90 days of data, finds your ad-spend ceiling to the dollar, and hands you the plan to move it — walkthrough call included. Credited against your first month if you continue with any package."
+  cta: 'Get the Audit'
 faq:
   kicker: 'Fair questions'
   heading: 'Before you ask'
   items:
-    - q: 'Why does every engagement start with a paid audit?'
-      a: "Because managing ad spend without knowing your ceiling is guessing with your money. The audit gives both of us the same map before any retainer starts — and if the numbers say we can't help, we tell you at $299, not at month three of a retainer."
+    - q: 'How is this so much cheaper than US or UK agencies?'
+      a: "Structure, not corners. Delivery runs from Karachi — one of the region's deepest finance-and-marketing talent pools — at cost structures Western agencies can't match. Same tooling, senior analysts, roughly half to a third of the fee."
     - q: 'Am I locked into a contract?'
-      a: 'Month-to-month after the first 90 days. The first 90 days matter because moving a ceiling takes at least two curve cycles — shorter than that and neither of us can judge the work honestly.'
-    - q: "What if my ceiling can't be moved?"
-      a: "Sometimes the constraint is the offer or unit economics, not the ads. If the audit shows that, we say so and point you at what actually needs fixing first. We only propose a retainer when the curve says there's headroom."
+      a: 'No. Every package is a 30-day rolling agreement. Cancel any month, and every account we build — ads, analytics, tag manager — is created under your ownership from day one, so you keep everything.'
+    - q: 'Which package fits me?'
+      a: "Rough guide by ad spend: under $3K/month → Launch. $3K–$10K → Growth. $10K–$50K → Scale. Not sure, or scaling past $50K? Start with the $299 audit and the numbers will tell you."
+    - q: 'Do I need the audit first?'
+      a: "No — packages stand on their own. The audit is for founders who want the full ceiling diagnostic up front. If you take it and then start a package, the $299 is credited to your first month."
 finalCta:
-  heading: 'The audit tells you which tier fits — or whether you need one at all.'
+  heading: 'Pick a package, or let the audit pick it for you.'
   cta: 'Get the $299 Audit'
 ---

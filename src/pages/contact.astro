@@ -14,7 +14,7 @@ const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || SITE_CONFIG.formEnd
 const whatsappUrl = import.meta.env.PUBLIC_WHATSAPP_URL || '';
 
 const inputClass =
-  'w-full rounded-md border border-offwhite/20 bg-offwhite/5 px-4 py-3 text-offwhite placeholder:text-offwhite/40';
+  'w-full rounded-md border border-charcoal/20 bg-white px-4 py-3 text-charcoal placeholder:text-charcoal/40';
 ---
 
 <BaseLayout title={c.title} description={c.description}>
@@ -32,7 +32,7 @@ const inputClass =
           )}
           <p class="muted text-sm">
             {c.email.note}
-            <a href={`mailto:${c.email.address}`} class="text-accent underline underline-offset-3">
+            <a href={`mailto:${c.email.address}`} class="text-accent-deep underline underline-offset-3">
               {c.email.address}
             </a>
           </p>
@@ -74,7 +74,7 @@ const inputClass =
               </div>
             </form>
           ) : (
-            <div class="rounded-lg border border-dashed border-offwhite/20 p-10">
+            <div class="rounded-lg border border-dashed border-charcoal/25 bg-white p-10">
               <h3>{c.fallback.heading}</h3>
               <p class="lead mt-3">{c.fallback.body}</p>
             </div>

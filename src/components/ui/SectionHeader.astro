@@ -1,6 +1,8 @@
 ---
-// Usage: <SectionHeader kicker="The method" title="Find the ceiling" lead="One number decides..." />
-// All props optional except title.
+// Usage: <SectionHeader kicker="The method" title="Find the *ceiling*" lead="..." />
+// *phrase* in title renders with the amber marker highlight. All props optional except title.
+import { hl } from '../../lib/hl';
+
 interface Props {
   kicker?: string;
   title: string;
@@ -13,6 +15,6 @@ const { kicker, title, lead, class: className } = Astro.props;
 
 <div class:list={['max-w-2xl', className]}>
   {kicker && <p class="kicker">{kicker}</p>}
-  <h2 class:list={[kicker && 'mt-4']}>{title}</h2>
+  <h2 class:list={[kicker && 'mt-4']} set:html={hl(title)} />
   {lead && <p class="lead mt-4">{lead}</p>}
 </div>

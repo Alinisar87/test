@@ -25,6 +25,10 @@
   /* Contrast-safe accent for text on offwhite sections (#2ad17e fails WCAG on light bg) */
   --color-accent-deep: #127246;
   --color-offwhite: #f7f7f5;
+  --color-amber: #ffc24b;
+  --color-coral: #ff6b57;
+  --color-sky: #38bdf8;
+  --color-violet: #7c5cff;
 
   --font-sans: 'Inter Variable', 'Inter Fallback', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
@@ -32,8 +36,8 @@
 
 @layer base {
   html {
-    background-color: var(--color-charcoal);
-    color: var(--color-offwhite);
+    background-color: var(--color-offwhite);
+    color: var(--color-charcoal);
     font-family: var(--font-sans);
     /* Numbers over adjectives: keep figures tabular everywhere */
     font-feature-settings: 'tnum';
@@ -92,11 +96,13 @@
     inset: 0;
     pointer-events: none;
     background-image:
-      radial-gradient(640px 420px at 78% 30%, rgb(42 209 126 / 0.09), transparent 65%),
-      radial-gradient(480px 320px at 12% 85%, rgb(42 209 126 / 0.05), transparent 60%),
-      linear-gradient(rgb(247 247 245 / 0.028) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(247 247 245 / 0.028) 1px, transparent 1px);
+      radial-gradient(640px 420px at 80% 25%, rgb(42 209 126 / 0.16), transparent 65%),
+      radial-gradient(520px 360px at 8% 80%, rgb(255 194 75 / 0.18), transparent 60%),
+      radial-gradient(420px 300px at 55% 110%, rgb(56 189 248 / 0.12), transparent 60%),
+      linear-gradient(rgb(17 19 24 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(17 19 24 / 0.035) 1px, transparent 1px);
     background-size:
+      auto,
       auto,
       auto,
       44px 44px,
@@ -110,11 +116,18 @@
     font-size: var(--text-xs);
     text-transform: uppercase;
     letter-spacing: 0.2em;
+    color: var(--color-accent-deep);
+  }
+  /* On dark sections the bright accent is the contrast-safe one */
+  .bg-charcoal .kicker,
+  footer .kicker {
     color: var(--color-accent);
   }
-  /* On light sections the bright accent fails contrast — swap to the deep variant */
-  .bg-offwhite .kicker {
-    color: var(--color-accent-deep);
+
+  /* Marker highlight for key headline phrases */
+  .hl {
+    background-image: linear-gradient(transparent 58%, rgb(255 194 75 / 0.65) 58%, rgb(255 194 75 / 0.65) 94%, transparent 94%);
+    padding: 0 0.08em;
   }
   /* Lead paragraph — uses currentColor + opacity so it works on dark and offwhite sections */
   .lead {
@@ -152,7 +165,7 @@
     opacity: 0.8;
   }
   .prose-dark strong {
-    color: var(--color-accent);
+    color: var(--color-accent-deep);
     font-family: var(--font-mono);
     font-size: 0.95em;
     opacity: 1;
@@ -176,7 +189,7 @@
     font-style: italic;
   }
   .prose-dark a {
-    color: var(--color-accent);
+    color: var(--color-accent-deep);
     text-decoration: underline;
     text-underline-offset: 3px;
   }

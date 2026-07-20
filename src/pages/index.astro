@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { hl } from '../lib/hl';
 import Button from '../components/ui/Button.astro';
 import Curve from '../components/ui/Curve.astro';
 import Section from '../components/ui/Section.astro';
@@ -9,6 +10,14 @@ import SectionHeader from '../components/ui/SectionHeader.astro';
 const entry = await getEntry('pages', 'home');
 if (!entry) throw new Error('Missing content: src/content/pages/home.md');
 const c = entry.data as any;
+
+const chips: Record<string, { bg: string; dot: string }> = {
+  sky: { bg: 'bg-sky/15', dot: 'bg-sky' },
+  violet: { bg: 'bg-violet/15', dot: 'bg-violet' },
+  coral: { bg: 'bg-coral/15', dot: 'bg-coral' },
+  amber: { bg: 'bg-amber/25', dot: 'bg-amber' },
+  accent: { bg: 'bg-accent/15', dot: 'bg-accent' },
+};
 ---
 
 <BaseLayout title={c.title} description={c.description}>
@@ -17,7 +26,7 @@ const c = entry.data as any;
     <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-20 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:pb-24 lg:pt-28">
       <div>
         <p class="kicker">{c.hero.kicker}</p>
-        <h1 class="mt-5 max-w-2xl text-4xl sm:text-5xl lg:text-6xl">{c.hero.heading}</h1>
+        <h1 class="mt-5 max-w-2xl text-4xl sm:text-5xl lg:text-6xl" set:html={hl(c.hero.heading)} />
         <p class="lead mt-6 max-w-xl">{c.hero.lead}</p>
         <div class="mt-8 flex flex-wrap items-center gap-4">
           <Button href="/audit" size="lg">{c.hero.cta}</Button>
@@ -40,12 +49,37 @@ const c = entry.data as any;
   <Curve variant="divider" />
 
   <Section>
+    <SectionHeader kicker={c.services.kicker} title={c.services.heading} lead={c.services.lead} />
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        c.services.items.map((svc: any) => {
+          const chip = chips[svc.color] ?? chips.accent;
+          return (
+            <div class="rounded-xl border border-charcoal/10 bg-white p-6 shadow-[0_2px_16px_rgb(17_19_24/0.05)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_32px_rgb(17_19_24/0.10)]">
+              <span class:list={['inline-flex h-10 w-10 items-center justify-center rounded-lg', chip.bg]} aria-hidden="true">
+                <span class:list={['h-3.5 w-3.5 rounded-full', chip.dot]} />
+              </span>
+              <h3 class="mt-4">{svc.name}</h3>
+              <p class="muted mt-2 text-sm leading-relaxed">{svc.blurb}</p>
+            </div>
+          );
+        })
+      }
+      <div class="flex flex-col items-start justify-center rounded-xl bg-charcoal p-6 text-offwhite">
+        <h3>{c.services.packagesCard.heading}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-offwhite/70">{c.services.packagesCard.body}</p>
+        <Button href="/pricing" class="mt-5">{c.services.packagesCard.cta}</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section bordered>
     <SectionHeader kicker={c.curveSteps.kicker} title={c.curveSteps.heading} lead={c.curveSteps.lead} />
     <ol class="mt-10 grid gap-8 md:grid-cols-3">
       {
         c.curveSteps.items.map((item: any, i: number) => (
           <li>
-            <span class="data text-accent" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="data text-accent-deep" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <h3 class="mt-2">{item.title}</h3>
             <p class="muted mt-2 leading-relaxed">{item.body}</p>
           </li>
@@ -72,7 +106,7 @@ const c = entry.data as any;
     <div class="grid gap-10 md:grid-cols-2">
       {
         [c.caseTeaser, c.pricingTeaser].map((teaser: any) => (
-          <div class="group flex flex-col items-start rounded-lg border border-offwhite/10 bg-gradient-to-br from-offwhite/[0.03] to-transparent p-8 transition-colors hover:border-accent/40">
+          <div class="group flex flex-col items-start rounded-xl border border-charcoal/10 bg-white p-8 shadow-[0_2px_16px_rgb(17_19_24/0.05)] transition-all hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_12px_32px_rgb(17_19_24/0.10)]">
             <p class="kicker">{teaser.kicker}</p>
             <h3 class="mt-3">{teaser.heading}</h3>
             <p class="muted mt-3 leading-relaxed">{teaser.body}</p>

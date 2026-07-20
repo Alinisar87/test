@@ -4,7 +4,7 @@ title: 'Profit Curve Audit — find the exact point your ad spend stops making m
 description: 'A $299 flat-fee audit that plots your marginal ROAS curve, finds your ad-spend ceiling to the dollar, and hands you the plan to move it. Delivered in 5 days by a chartered-accountant-led team.'
 hero:
   kicker: 'The Profit Curve Audit — $299 flat'
-  heading: 'Find the exact point your ad spend stops making money.'
+  heading: 'Find the exact point your ad spend *stops making money.*'
   lead: 'Somewhere between your current budget and the budget you want, your next dollar of ad spend quietly stops returning profit. We find that dollar. Then we show you how to move it higher.'
   cta: 'Get the Audit — $299'
   ctaNote: 'Flat fee. 5-day delivery. Walkthrough call included.'

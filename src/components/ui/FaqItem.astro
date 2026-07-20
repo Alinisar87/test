@@ -9,9 +9,9 @@ const { question } = Astro.props;
 ---
 
 <details class="group border-b border-current/10">
-  <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-medium transition-colors hover:text-accent group-open:text-accent [&::-webkit-details-marker]:hidden">
+  <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-medium transition-colors hover:text-accent-deep group-open:text-accent-deep [&::-webkit-details-marker]:hidden">
     {question}
-    <span class="data text-accent transition-transform duration-200 group-open:rotate-45" aria-hidden="true">+</span>
+    <span class="data text-accent-deep transition-transform duration-200 group-open:rotate-45" aria-hidden="true">+</span>
   </summary>
   <div class="lead pb-5 text-base">
     <slot />

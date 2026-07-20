@@ -1,7 +1,7 @@
 # Plan — KB Redesign (bright rebrand + packages + service menu)
 
 **Branch:** session branch · **Roadmap:** item 14 (pivot, Ali directed 2026-07-20)
-**Status:** [x] planned  [ ] implemented  [ ] validated
+**Status:** [x] planned  [x] implemented  [x] validated
 
 ## Problem Statement
 Ali's direction: KlientBoost (klientboost.com) as design/content reference, SoftCrust-style published packages "to start with", full service menu. Convert the existing dark analytical site to a bright, colorful, conversion-energy site — **inspired by, never copying** KlientBoost's artwork, copy, or branding.
@@ -24,5 +24,9 @@ Theme inversion at the token/component layer so pages mostly follow: light `#F7F
 ## Out of Scope
 - Individual service pages (roadmap item 15); custom illustration library (needs a designer/budget); testimonials (no real clients citable — NO fabricated reviews); the client app
 
-## Validation constraint
-- Lighthouse ≥ 95/95/90 (target 100s), zero JS, 320px clean, all 8 routes
+## Validation (2026-07-20)
+- [x] All 8 routes: 200, zero horizontal overflow at 320px + 1280px
+- [x] Lighthouse **100/100/100, CLS 0** on /, /audit, /pricing (after fixing a Section default-variant bug that kept sections dark, and killing a stale preview server that was poisoning earlier audits)
+- [x] Zero client JS; all effects CSS/SVG; contrast-safe deep accent used for all accent text on light bg
+- [x] OG image regenerated in the light brand
+- ⚠️ DRAFT for Ali review: package names/PRICES ($199/$549/$1,199), inclusions, "your accounts your ownership" + "cheaper than US/UK" policy claims, all new services copy

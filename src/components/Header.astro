@@ -13,14 +13,14 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => currentPath === href.replace(/\/$/, '');
 ---
 
-<header class="sticky top-0 z-40 border-b border-offwhite/10 bg-charcoal/85 backdrop-blur-md">
+<header class="sticky top-0 z-40 border-b border-charcoal/10 bg-offwhite/85 backdrop-blur-md">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
     <input type="checkbox" id="nav-toggle" class="peer sr-only" aria-label="Open navigation menu" />
 
     <div class="flex items-center justify-between gap-4 py-4">
       <a
         href="/"
-        class="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight text-offwhite"
+        class="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight text-charcoal"
       >
         <svg viewBox="0 0 32 32" class="h-6 w-6" aria-hidden="true">
           <rect width="32" height="32" rx="6" fill="none" stroke="#2AD17E" stroke-opacity="0.35"></rect>
@@ -32,12 +32,12 @@ const isActive = (href: string) => currentPath === href.replace(/\/$/, '');
             stroke-linecap="round"
           ></path>
         </svg>
-        Seven Figures <span class="text-accent">Lab</span>
+        Seven Figures <span class="text-accent-deep">Lab</span>
       </a>
 
       <div class="flex items-center gap-3 md:gap-5">
         <nav aria-label="Main" class="hidden md:block">
-          <ul class="flex items-center gap-x-5 text-sm text-offwhite/80">
+          <ul class="flex items-center gap-x-5 text-sm text-charcoal/75">
             {
               links.map((link) => (
                 <li>
@@ -45,8 +45,8 @@ const isActive = (href: string) => currentPath === href.replace(/\/$/, '');
                     href={link.href}
                     aria-current={isActive(link.href) ? 'page' : undefined}
                     class:list={[
-                      'transition-colors hover:text-accent',
-                      isActive(link.href) && 'text-accent',
+                      'transition-colors hover:text-accent-deep',
+                      isActive(link.href) && 'text-accent-deep',
                     ]}
                   >
                     {link.label}
@@ -62,9 +62,9 @@ const isActive = (href: string) => currentPath === href.replace(/\/$/, '');
           class="nav-toggle-label flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-md md:hidden"
           aria-hidden="true"
         >
-          <span class="nav-bar block h-0.5 w-5 bg-offwhite transition"></span>
-          <span class="nav-bar block h-0.5 w-5 bg-offwhite transition"></span>
-          <span class="nav-bar block h-0.5 w-5 bg-offwhite transition"></span>
+          <span class="nav-bar block h-0.5 w-5 bg-charcoal transition"></span>
+          <span class="nav-bar block h-0.5 w-5 bg-charcoal transition"></span>
+          <span class="nav-bar block h-0.5 w-5 bg-charcoal transition"></span>
         </label>
       </div>
     </div>
@@ -73,13 +73,13 @@ const isActive = (href: string) => currentPath === href.replace(/\/$/, '');
       aria-label="Main mobile"
       class="invisible max-h-0 overflow-hidden pb-0 transition-all duration-300 peer-checked:visible peer-checked:max-h-96 peer-checked:pb-4 md:hidden"
     >
-      <ul class="flex flex-col border-t border-offwhite/10 pt-2">
+      <ul class="flex flex-col border-t border-charcoal/10 pt-2">
         {
           links.map((link) => (
             <li>
               <a
                 href={link.href}
-                class="block px-2 py-3 text-base text-offwhite/80 transition-colors hover:text-accent"
+                class="block px-2 py-3 text-base text-charcoal/80 transition-colors hover:text-accent-deep"
               >
                 {link.label}
               </a>
