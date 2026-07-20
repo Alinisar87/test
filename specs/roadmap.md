@@ -2,6 +2,8 @@
 
 Each item = one feature branch with plan/requirements/validation per SDD. MVP cut line marked.
 
+> **Process note (2026-07-20):** Ali granted standing approval — features proceed through plan→implement→validate without per-feature sign-off gates. Draft copy (guarantee wording, tier pricing, case-study numbers) is flagged in each feature's validation.md for Ali's later word-level review.
+
 ## Phase 1 — Foundation
 1. ~~**scaffold**~~ ✅ — Astro + Tailwind project, layout shell (header/footer/nav), brand tokens, fonts, deploy pipeline to Cloudflare Pages (deploy from day one, not at the end) — *done 2026-07-20; Cloudflare dashboard connection pending (manual)*
 2. ~~**design-system**~~ ✅ — typography scale, buttons, section components, the curve motif SVG, mobile nav — *done 2026-07-20*

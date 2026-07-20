@@ -2,7 +2,7 @@
 
 **Branch:** `claude/sfl-website-specs-phase-2-81fmd9` (session-designated branch; serves as the `feature/design-system` branch)
 **Roadmap phase:** Phase 1, item 2
-**Status:** [x] planned  [x] implemented  [x] validated  [ ] signed off / merged
+**Status:** [x] planned  [x] implemented  [x] validated  [x] signed off (standing approval)
 
 ---
 
