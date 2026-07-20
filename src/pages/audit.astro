@@ -1,0 +1,98 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Curve from '../components/ui/Curve.astro';
+import FaqItem from '../components/ui/FaqItem.astro';
+import Section from '../components/ui/Section.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+
+const entry = await getEntry('pages', 'audit');
+if (!entry) throw new Error('Missing content: src/content/pages/audit.md');
+const c = entry.data as any;
+
+// TODO(Ali): set PUBLIC_STRIPE_AUDIT_URL once the Stripe payment link exists
+const stripeUrl = import.meta.env.PUBLIC_STRIPE_AUDIT_URL || '#';
+---
+
+<BaseLayout title={c.title} description={c.description}>
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <p class="kicker">{c.hero.kicker}</p>
+      <h1 class="mt-5">{c.hero.heading}</h1>
+      <p class="lead mt-6 max-w-2xl">{c.hero.lead}</p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <Button href={stripeUrl} size="lg">{c.hero.cta}</Button>
+        <p class="muted font-mono text-xs">{c.hero.ctaNote}</p>
+      </div>
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section>
+    <SectionHeader kicker={c.deliverables.kicker} title={c.deliverables.heading} />
+    <ol class="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+      {
+        c.deliverables.items.map((item: any, i: number) => (
+          <li class="flex gap-4">
+            <span class="data text-accent" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div>
+              <h3>{item.title}</h3>
+              <p class="muted mt-2 leading-relaxed">{item.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section padding="md">
+    <div class="rounded-lg border border-accent/40 bg-accent/5 p-8 sm:p-10">
+      <p class="kicker">{c.guarantee.kicker}</p>
+      <h2 class="mt-4">{c.guarantee.heading}</h2>
+      <p class="lead mt-4 max-w-2xl">{c.guarantee.body}</p>
+      <div class="mt-6">
+        <Button href={stripeUrl} size="lg">{c.hero.cta}</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section bordered>
+    <SectionHeader kicker={c.howItWorks.kicker} title={c.howItWorks.heading} />
+    <ol class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        c.howItWorks.steps.map((step: any, i: number) => (
+          <li>
+            <span class="data text-accent" aria-hidden="true">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mt-2">{step.title}</h3>
+            <p class="muted mt-2 text-sm leading-relaxed">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section bordered>
+    <SectionHeader kicker={c.faq.kicker} title={c.faq.heading} />
+    <div class="mt-8 max-w-3xl">
+      {c.faq.items.map((item: any) => <FaqItem question={item.q}>{item.a}</FaqItem>)}
+    </div>
+  </Section>
+
+  <Curve variant="divider" />
+
+  <Section padding="lg">
+    <div class="max-w-3xl">
+      <h2>{c.finalCta.heading}</h2>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <Button href={stripeUrl} size="lg">{c.finalCta.cta}</Button>
+        <p class="muted font-mono text-xs">{c.finalCta.ctaNote}</p>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

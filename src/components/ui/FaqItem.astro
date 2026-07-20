@@ -1,0 +1,19 @@
+---
+// Usage: <FaqItem question="Why paid?">answer content</FaqItem>
+// Zero-JS accordion via native <details>/<summary>.
+interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+---
+
+<details class="group border-b border-current/10">
+  <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-medium [&::-webkit-details-marker]:hidden">
+    {question}
+    <span class="text-accent transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+  </summary>
+  <div class="lead pb-5 text-base">
+    <slot />
+  </div>
+</details>
