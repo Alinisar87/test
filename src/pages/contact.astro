@@ -8,8 +8,8 @@ const entry = await getEntry('pages', 'contact');
 if (!entry) throw new Error('Missing content: src/content/pages/contact.md');
 const c = entry.data as any;
 
-// TODO(Ali): set PUBLIC_GHL_FORM_ENDPOINT + PUBLIC_WHATSAPP_URL in Cloudflare env
-const formEndpoint = import.meta.env.PUBLIC_GHL_FORM_ENDPOINT || '';
+// TODO(Ali): set PUBLIC_FORM_ENDPOINT (Formspree/Web3Forms/any POST endpoint) + PUBLIC_WHATSAPP_URL
+const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT || '';
 const whatsappUrl = import.meta.env.PUBLIC_WHATSAPP_URL || '';
 
 const inputClass =

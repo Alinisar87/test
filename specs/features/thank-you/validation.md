@@ -9,7 +9,7 @@
 - [x] dataLayer snippet absent when `PUBLIC_GTM_ID` unset; present with test ID
 
 ## Pending external setup (Ali)
-- [ ] Set `PUBLIC_GHL_CALENDAR_URL` (GHL calendar embed link) in Cloudflare env
+- [ ] Set `PUBLIC_BOOKING_URL` (Cal.com event link) in Cloudflare env
 - [ ] Stripe payment link success URL → https://sevenfigureslab.com/thanks
 - [ ] Purchase event verified live once GTM (item 10) has a real container ID
 

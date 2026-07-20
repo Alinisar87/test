@@ -10,7 +10,7 @@
 Post-purchase page: book the walkthrough call (GHL calendar embed), set expectations ("what happens next" timeline), and register the `purchase` conversion event.
 
 ## Approach
-Copy in `src/content/pages/thanks.md`. GHL calendar iframe from `PUBLIC_GHL_CALENDAR_URL` (styled placeholder panel when unset — env not yet provisioned). `purchase` dataLayer push rendered ONLY when `PUBLIC_GTM_ID` is set — inert until item 10 wires GTM; roadmap line satisfied, full verification deferred to tracking feature. Page is `noindex` (BaseLayout gains an optional `noindex` prop).
+Copy in `src/content/pages/thanks.md`. GHL calendar iframe from `PUBLIC_BOOKING_URL` (styled placeholder panel when unset — env not yet provisioned). `purchase` dataLayer push rendered ONLY when `PUBLIC_GTM_ID` is set — inert until item 10 wires GTM; roadmap line satisfied, full verification deferred to tracking feature. Page is `noindex` (BaseLayout gains an optional `noindex` prop).
 
 ## Task Groups
 1. `thanks.md` content + `/thanks` page + BaseLayout noindex prop
