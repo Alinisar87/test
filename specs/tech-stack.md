@@ -22,10 +22,14 @@
 - All copy lives in `src/content/` as markdown/MDX — copy edits must never require touching components
 - Env vars for GHL endpoint + GTM ID; nothing hardcoded
 
-## Brand constants (v1 — revisit after logo)
-- Distinct from Markup Valley palette (separate brand): deep charcoal `#111318`, electric green accent `#2AD17E` (profit/growth signal), off-white `#F7F7F5`, deep accent `#127246` (contrast-safe accent text on light sections)
-- Tone: analytical, direct, zero guru-speak. Numbers over adjectives.
-- Visual motif: **the curve** — a rising-then-flattening spend curve used in hero, section dividers, favicon
+## Brand constants (v2 — bright rebrand 2026-07-20, KlientBoost-inspired; v1 dark theme retired)
+- Light-first: background off-white `#F7F7F5`, ink charcoal `#111318`
+- Primary accent: electric green `#2AD17E` (buttons/graphics) with deep green `#127246` for accent TEXT on light bg (contrast)
+- Support brights (cards, blobs, highlights): amber `#FFC24B`, coral `#FF6B57`, sky `#38BDF8`, violet `#7C5CFF`
+- Dark charcoal retained as a contrast VARIANT (footer, highlighted pricing tier, optional dark sections)
+- Headline device: amber marker-highlight on key phrases (`.hl`)
+- Tone: energetic + conversion-focused, still numbers-over-adjectives. Inspired by KlientBoost's energy; zero copied assets/copy.
+- Visual motif: **the curve** — unchanged
 
 ## Integrations checklist
 - [ ] GHL: new sub-account or pipeline "SFL — Audit Funnel" (stages: Audit Purchased → Data Received → Audit Delivered → Walkthrough Booked → Proposal → Won/Lost)

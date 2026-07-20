@@ -19,6 +19,9 @@ Differentiators, in order: (1) marginal ROAS curve methodology, (2) FCCA/CIA/CFE
 - PageSpeed ≥ 95 mobile (the site IS the credibility proof for a performance agency)
 - Every form submission lands in GHL within seconds, tagged by source
 
+## Pivot note (2026-07-20)
+Site expanded beyond the single audit funnel: full service menu (Google Ads, Paid Social, CRO, SEO, Email) with published monthly packages from ~$199/mo (30-day rolling). The $299 Profit Curve Audit remains the flagship diagnostic. Design reference: KlientBoost energy (inspired, not copied); pricing model reference: SoftCrust.
+
 ## Scope v1
 Home, Audit (primary funnel page), Pricing, Case Study (Shopify ROAS analysis), About, Contact, thank-you/booking page. Blog structure scaffolded but empty.
 
