@@ -114,7 +114,7 @@ export function RadioCards<T extends string>({
             key={o.value}
             type="button"
             onClick={() => onChange(o.value)}
-            className={`rounded-xl border p-3 text-left transition ${
+            className={`rounded-xl border p-3 text-start transition ${
               value === o.value
                 ? "border-brand-500 bg-brand-50 ring-2 ring-brand-200"
                 : "border-slate-200 bg-white hover:border-slate-300"

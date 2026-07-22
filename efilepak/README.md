@@ -47,8 +47,11 @@ npm run dev                   # http://localhost:3000
 
 ## What's built
 
+- **Bilingual — English + اردو (RTL)** — full language toggle; the whole UI, including the questionnaire, flips to right-to-left Urdu. Structured to add Sindhi/Pashto/Punjabi/Balochi (mirrors FBR's own regional-language rollout) by extending one dictionary.
 - **Auth** — register / login / logout with hashed passwords and JWT cookie sessions; `USER` and `STAFF` roles.
-- **Questionnaire wizard** — 7 steps (about you → income → tax paid → deductions → wealth statement → documents → review) with a **live tax estimate** that updates as you type. Branches for salaried vs business/AOP.
+- **Questionnaire wizard** — FBR-style **one question per screen** (matching the new "8 digital windows" simplified return), grouped into stages (about you → income → tax paid → deductions → wealth statement → documents → review) with a **live tax estimate** that updates as you type. Branches for salaried vs business/AOP.
+- **Auto-fill scaffolding** — an "auto-fill" step that captures employer/bank and pre-labels fields, with an honest note that live FBR data isn't accessible to third parties. `src/lib/prefill.ts` is the swappable seam for a future authorised FBR/PRAL feed.
+- **Fast-refund + deadline cues** — flags returns eligible for the sub-Rs 50,000 fast refund and shows a live 30 Sept 2026 deadline countdown; helpline/support block.
 - **Document uploads** — PDF/JPG/PNG, stored per-filing, served through an authorization-checked route.
 - **Tax engine** — TY2026 salaried and business/AOP slabs, surcharge over Rs 10m, Zakat allowance, donation (s.61) and pension (s.63) tax credits, withholding reconciliation, and a **wealth-statement reconciliation** with red-flag detection.
 - **Filing workflow** — `DRAFT → SUBMITTED → IN_REVIEW → (INFO_NEEDED) → FILED → COMPLETED`, with a per-filing event timeline.

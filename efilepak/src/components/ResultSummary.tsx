@@ -18,7 +18,7 @@ function Row({
     <div className="flex items-baseline justify-between gap-4 py-1.5">
       <span className={`text-sm ${strong ? "font-semibold" : ""}`}>
         {label}
-        {note && <span className="ml-1 text-xs text-muted">({note})</span>}
+        {note && <span className="ms-1 text-xs text-muted">({note})</span>}
       </span>
       <span
         className={`tabular-nums ${strong ? "font-semibold" : ""} ${
@@ -122,7 +122,7 @@ export function ResultSummary({ result }: { result: TaxResult }) {
           <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-amber-800">
             Points to review
           </h3>
-          <ul className="list-disc space-y-1 pl-5 text-sm text-amber-900">
+          <ul className="list-disc space-y-1 ps-5 text-sm text-amber-900">
             {result.warnings.map((w, i) => (
               <li key={i}>{w}</li>
             ))}

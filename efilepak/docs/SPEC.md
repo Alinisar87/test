@@ -49,6 +49,26 @@ the return and a professional files it on IRIS.
 - Reconciliation of tax already withheld / paid → payable or refund.
 - **Wealth statement** reconciliation (s.116) with unexplained-increase flagging.
 
+## v1.1 additions (aligned to FBR's July 2025 reforms)
+
+The FBR rolled out a *simplified interactive return* — eight digital windows,
+one question per screen, in Urdu and regional languages, with database-driven
+auto-fill and fast refunds for salaried filers. This update responds:
+
+- **Bilingual English + Urdu with RTL.** All taxpayer-facing surfaces translate;
+  the dictionary (`src/lib/i18n/dictionary.ts`) is the single place to add
+  Sindhi/Pashto/Punjabi/Balochi.
+- **One-question-per-screen wizard**, mirroring the FBR "8 windows" UX.
+- **Auto-fill scaffolding** (`src/lib/prefill.ts`) — honest about the fact that
+  FBR's auto-fill reads its own central database, which third parties cannot
+  access. The seam is ready for an authorised FBR/PRAL feed.
+- **Fast-refund flag** (sub-Rs 50,000) and a **deadline countdown**; helpline.
+
+**Positioning.** Because FBR now offers a free, simplified salaried form, eFile
+Pak leads with *done-for-you*: a professional files for you, handles business/AOP
+complexity, reconciles the wealth statement, and follows up the refund — value
+FBR's self-service form does not provide.
+
 ## Workflow
 
 ```
