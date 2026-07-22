@@ -1,0 +1,100 @@
+// eFile Pak — data model
+// SQLite for local dev. For production, switch `provider` to "postgresql"
+// and point DATABASE_URL at a managed Postgres instance.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  STAFF
+}
+
+enum FilerType {
+  SALARIED
+  BUSINESS
+  AOP
+}
+
+// Workflow for a done-for-you filing service:
+// DRAFT        -> taxpayer is still completing the questionnaire
+// SUBMITTED    -> handed off to the Markup Valley team
+// IN_REVIEW    -> a staff member is preparing/verifying the return
+// INFO_NEEDED  -> team requested more info/documents from the taxpayer
+// FILED        -> return filed on FBR IRIS by the team
+// COMPLETED    -> acknowledgement shared, engagement closed
+enum FilingStatus {
+  DRAFT
+  SUBMITTED
+  IN_REVIEW
+  INFO_NEEDED
+  FILED
+  COMPLETED
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  cnic         String?
+  phone        String?
+  role         Role      @default(USER)
+  createdAt    DateTime  @default(now())
+  filings      Filing[]
+}
+
+model Filing {
+  id          String        @id @default(cuid())
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  taxYear     Int           @default(2026)
+  filerType   FilerType     @default(SALARIED)
+  status      FilingStatus  @default(DRAFT)
+  // Questionnaire answers, serialized JSON (see src/lib/tax/types.ts -> FilingInput).
+  data        String        @default("{}")
+  // Computed tax result, serialized JSON (TaxResult). Refreshed on each save.
+  computed    String        @default("{}")
+  notes       String?       // staff-facing notes
+  submittedAt DateTime?
+  filedAt     DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  documents   Document[]
+  events      StatusEvent[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+model Document {
+  id           String   @id @default(cuid())
+  filing       Filing   @relation(fields: [filingId], references: [id], onDelete: Cascade)
+  filingId     String
+  kind         String   // e.g. "salary_certificate", "bank_statement", "tax_deduction_cert"
+  originalName String
+  storedPath   String
+  mimeType     String
+  size         Int
+  createdAt    DateTime @default(now())
+
+  @@index([filingId])
+}
+
+model StatusEvent {
+  id        String       @id @default(cuid())
+  filing    Filing       @relation(fields: [filingId], references: [id], onDelete: Cascade)
+  filingId  String
+  status    FilingStatus
+  message   String?
+  actor     String?      // who triggered it (user email / staff email / "system")
+  createdAt DateTime     @default(now())
+
+  @@index([filingId])
+}
