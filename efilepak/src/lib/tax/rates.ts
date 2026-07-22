@@ -33,6 +33,9 @@ export interface YearRates {
   // Statutory caps used in tax-credit computations.
   donationCapFractionOfTaxableIncome: number; // section 61
   pensionCapFractionOfTaxableIncome: number; // section 63
+  // Final tax on IT / IT-enabled services export receipts (section 154A).
+  itExportRateStandard: number; // not registered with PSEB
+  itExportRatePseb: number; // registered with PSEB
 }
 
 // --- Tax Year 2026 (Finance Act 2025) ---------------------------------------
@@ -71,6 +74,11 @@ const TY2026: YearRates = {
 
   donationCapFractionOfTaxableIncome: 0.3,
   pensionCapFractionOfTaxableIncome: 0.2,
+
+  // IT/ITeS export final tax (s.154A): 1% standard, 0.25% if PSEB-registered
+  // and on the Active Taxpayer List. Verify against the current Finance Act.
+  itExportRateStandard: 0.01,
+  itExportRatePseb: 0.0025,
 };
 
 const YEARS: Record<number, YearRates> = {

@@ -6,7 +6,7 @@ import { DocumentsPanel } from "@/components/DocumentsPanel";
 import { getSession } from "@/lib/auth";
 import { getAuthorizedFiling, parseComputed, parseFilingInput } from "@/lib/filings";
 import { updateFilingStatus, saveStaffNote } from "@/app/actions/filings";
-import { FILER_TYPE_LABELS, STATUS_LABELS } from "@/lib/format";
+import { FILER_TYPE_LABELS, STATUS_LABELS, formatPKR } from "@/lib/format";
 
 export const metadata = { title: "Review return — eFile Pak" };
 
@@ -126,6 +126,34 @@ export default async function AdminFilingPage({
                 </button>
               </form>
             </div>
+
+            {/* Payments */}
+            {filing.payments.length > 0 && (
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <h3 className="mb-3 text-sm font-semibold">Payments</h3>
+                <ul className="space-y-2 text-sm">
+                  {filing.payments.map((p) => (
+                    <li key={p.id} className="flex items-center justify-between">
+                      <span>
+                        {formatPKR(p.amount)}{" "}
+                        <span className="text-xs text-muted">· {p.provider}</span>
+                      </span>
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                          p.status === "PAID"
+                            ? "bg-brand-50 text-brand-700"
+                            : p.status === "PENDING"
+                              ? "bg-amber-50 text-amber-800"
+                              : "bg-slate-100 text-slate-600"
+                        }`}
+                      >
+                        {p.status}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Timeline */}
             <div className="rounded-2xl border border-slate-200 bg-white p-5">

@@ -87,6 +87,8 @@ export const messages: Record<string, Entry> = {
   "auth.name": { en: "Full name", ur: "پورا نام" },
   "auth.email": { en: "Email", ur: "ای میل" },
   "auth.password": { en: "Password", ur: "پاس ورڈ" },
+  "auth.phone": { en: "WhatsApp number (optional)", ur: "واٹس ایپ نمبر (اختیاری)" },
+  "auth.phoneHint": { en: "For return status updates on WhatsApp.", ur: "واٹس ایپ پر گوشوارے کی صورتحال کی اطلاعات کے لیے۔" },
   "auth.passwordHint": { en: "At least 8 characters.", ur: "کم از کم 8 حروف۔" },
   "auth.createBtn": { en: "Create account", ur: "اکاؤنٹ بنائیں" },
   "auth.loginBtn": { en: "Log in", ur: "لاگ اِن" },
@@ -117,6 +119,13 @@ export const messages: Record<string, Entry> = {
   "wiz.businessHint": { en: "Self-employed / sole proprietor", ur: "خود کاروبار / واحد مالک" },
   "wiz.aop": { en: "AOP", ur: "اے او پی" },
   "wiz.aopHint": { en: "Association of Persons", ur: "ایسوسی ایشن آف پرسنز" },
+  "wiz.freelancer": { en: "Freelancer / IT", ur: "فری لانسر / آئی ٹی" },
+  "wiz.freelancerHint": { en: "IT / online services export", ur: "آئی ٹی / آن لائن خدمات کی برآمد" },
+  "wiz.q.itExport": { en: "How much did you receive from IT / online services exports?", ur: "آپ نے آئی ٹی / آن لائن خدمات کی برآمد سے کتنی رقم وصول کی؟" },
+  "wiz.q.itExportHint": { en: "Total foreign remittances for exported services during the year. Taxed at a low final rate (s.154A).", ur: "سال کے دوران برآمد کردہ خدمات کی کل غیر ملکی ترسیلات۔ کم حتمی شرح پر ٹیکس (دفعہ 154A)۔" },
+  "wiz.q.pseb": { en: "I am registered with PSEB (Pakistan Software Export Board)", ur: "میں پی ایس ای بی (پاکستان سافٹ ویئر ایکسپورٹ بورڈ) کے ساتھ رجسٹرڈ ہوں" },
+  "wiz.q.psebHint": { en: "PSEB-registered exporters pay a lower 0.25% final tax instead of 1%.", ur: "پی ایس ای بی رجسٹرڈ برآمد کنندگان 1% کے بجائے کم 0.25% حتمی ٹیکس ادا کرتے ہیں۔" },
+  "wiz.q.localIncome": { en: "Any local (non-export) freelance or business income?", ur: "کوئی مقامی (غیر برآمدی) فری لانس یا کاروباری آمدنی؟" },
 
   "wiz.s.type": { en: "About you", ur: "آپ کے بارے میں" },
   "wiz.s.income": { en: "Income", ur: "آمدنی" },
@@ -187,6 +196,15 @@ export const messages: Record<string, Entry> = {
   "prefill.btn": { en: "Prepare fields", ur: "فیلڈز تیار کریں" },
   "prefill.note": { en: "No live FBR data is accessed. You'll confirm every figure from your own documents.", ur: "کوئی براہِ راست ایف بی آر ڈیٹا حاصل نہیں کیا جاتا۔ آپ ہر رقم اپنی دستاویزات سے خود تصدیق کریں گے۔" },
   "prefill.ready": { en: "Fields prepared for {employer}. Enter the amounts from your salary and bank documents in the next steps.", ur: "{employer} کے لیے فیلڈز تیار ہیں۔ اگلے مراحل میں اپنی تنخواہ اور بینک دستاویزات سے رقوم درج کریں۔" },
+
+  // --- Payments ---
+  "pay.title": { en: "Pay to file your return", ur: "اپنا گوشوارہ جمع کرانے کے لیے ادائیگی کریں" },
+  "pay.body": { en: "Our fee to prepare, review and file this return with FBR on your behalf.", ur: "آپ کی طرف سے یہ گوشوارہ تیار کرنے، جانچنے اور ایف بی آر میں جمع کرانے کی ہماری فیس۔" },
+  "pay.fee": { en: "Filing fee", ur: "فائلنگ فیس" },
+  "pay.btn": { en: "Pay & submit", ur: "ادائیگی کریں اور جمع کرائیں" },
+  "pay.note": { en: "You'll be taken to a secure checkout. Your return goes to our team once payment is confirmed.", ur: "آپ کو محفوظ چیک آؤٹ پر لے جایا جائے گا۔ ادائیگی کی تصدیق کے بعد آپ کا گوشوارہ ہماری ٹیم کو مل جائے گا۔" },
+  "pay.mockNote": { en: "Test mode: payment is simulated — no real charge is made.", ur: "ٹیسٹ موڈ: ادائیگی فرضی ہے — کوئی حقیقی رقم نہیں لی جاتی۔" },
+  "pay.paid": { en: "Paid", ur: "ادا شدہ" },
 
   // --- Disclaimer ---
   "disclaimer": { en: "Estimate only. Figures are computed from the information you provide using Tax Year 2026 rates and are for review purposes. They are not a filed return. A qualified tax professional reviews every return before it is filed with FBR, and tax rates must be verified against the current Finance Act at filing time.", ur: "صرف تخمینہ۔ اعداد و شمار آپ کی فراہم کردہ معلومات سے ٹیکس سال 2026 کی شرحوں پر مبنی ہیں اور جائزے کے لیے ہیں۔ یہ جمع شدہ گوشوارہ نہیں۔ ہر گوشوارہ ایف بی آر میں جمع کرانے سے پہلے ایک ماہر جائزہ لیتا ہے، اور جمع کرانے کے وقت شرحوں کی موجودہ فنانس ایکٹ سے تصدیق ضروری ہے۔" },

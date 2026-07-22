@@ -103,6 +103,49 @@ test("wealth statement reconciles when inflows match", () => {
   assert.equal(r.wealth.reconciled, true);
 });
 
+test("freelancer: IT export final tax at 1% (non-PSEB)", () => {
+  const input = emptyFilingInput(2026, "FREELANCER");
+  input.taxpayer.cnic = "1234567890123";
+  input.income.itExportReceipts = 5_000_000;
+  input.income.psebRegistered = false;
+  const r = computeTax(input);
+  assert.equal(r.itExportFinalTax, 50_000); // 1%
+  assert.equal(r.itExportRate, 0.01);
+  assert.equal(r.taxChargeable, 50_000);
+});
+
+test("freelancer: PSEB-registered pays 0.25%", () => {
+  const input = emptyFilingInput(2026, "FREELANCER");
+  input.taxpayer.cnic = "1234567890123";
+  input.income.itExportReceipts = 5_000_000;
+  input.income.psebRegistered = true;
+  const r = computeTax(input);
+  assert.equal(r.itExportFinalTax, 12_500); // 0.25%
+});
+
+test("freelancer: export final tax stacks on top of local slab income", () => {
+  const input = emptyFilingInput(2026, "FREELANCER");
+  input.taxpayer.cnic = "1234567890123";
+  input.income.business = 2_000_000; // local income -> business slabs
+  input.income.itExportReceipts = 1_000_000; // -> 10,000 final tax
+  const r = computeTax(input);
+  // business slab on 2,000,000: 170,000 + 30% of 400,000 = 290,000
+  assert.equal(r.slabTax, 290_000);
+  assert.equal(r.itExportFinalTax, 10_000);
+  assert.equal(r.taxChargeable, 300_000);
+});
+
+test("export receipts help reconcile the wealth statement", () => {
+  const input = emptyFilingInput(2026, "FREELANCER");
+  input.taxpayer.cnic = "1234567890123";
+  input.income.itExportReceipts = 3_000_000;
+  input.wealth.openingNetAssets = 0;
+  input.wealth.closingNetAssets = 2_500_000;
+  input.wealth.personalExpenses = 500_000; // 3,000,000 - 500,000 = 2,500,000
+  const r = computeTax(input);
+  assert.equal(r.wealth.reconciled, true);
+});
+
 test("invalid CNIC produces a warning", () => {
   const input = emptyFilingInput(2026, "SALARIED");
   input.income.salary = 1_000_000;

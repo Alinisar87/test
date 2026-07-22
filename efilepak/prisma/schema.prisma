@@ -20,6 +20,26 @@ enum FilerType {
   SALARIED
   BUSINESS
   AOP
+  FREELANCER
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum NotificationChannel {
+  EMAIL
+  WHATSAPP
+  LOG
+}
+
+enum NotificationStatus {
+  SENT
+  FAILED
+  LOGGED
 }
 
 // Workflow for a done-for-you filing service:
@@ -68,9 +88,41 @@ model Filing {
   updatedAt   DateTime      @updatedAt
   documents   Document[]
   events      StatusEvent[]
+  payments    Payment[]
 
   @@index([userId])
   @@index([status])
+}
+
+model Payment {
+  id        String        @id @default(cuid())
+  filing    Filing        @relation(fields: [filingId], references: [id], onDelete: Cascade)
+  filingId  String
+  userId    String
+  amount    Int // whole rupees
+  currency  String        @default("PKR")
+  status    PaymentStatus @default(PENDING)
+  provider  String        @default("mock") // mock | safepay | jazzcash | stripe
+  reference String? // gateway transaction reference
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([filingId])
+}
+
+model Notification {
+  id        String              @id @default(cuid())
+  userId    String
+  filingId  String?
+  channel   NotificationChannel
+  recipient String
+  subject   String?
+  body      String
+  status    NotificationStatus  @default(LOGGED)
+  createdAt DateTime            @default(now())
+
+  @@index([userId])
+  @@index([filingId])
 }
 
 model Document {

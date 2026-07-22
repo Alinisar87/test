@@ -43,6 +43,7 @@ export function Wizard({
 
   const result = useMemo(() => computeTax(input), [input]);
   const isSalaried = input.filerType === "SALARIED";
+  const isFreelancer = input.filerType === "FREELANCER";
 
   function patch<K extends keyof FilingInput>(
     section: K,
@@ -68,6 +69,7 @@ export function Wizard({
           options={[
             { value: "SALARIED", label: t("wiz.salaried"), hint: t("wiz.salariedHint") },
             { value: "BUSINESS", label: t("wiz.business"), hint: t("wiz.businessHint") },
+            { value: "FREELANCER", label: t("wiz.freelancer"), hint: t("wiz.freelancerHint") },
             { value: "AOP", label: t("wiz.aop"), hint: t("wiz.aopHint") },
           ]}
         />
@@ -143,32 +145,59 @@ export function Wizard({
     });
   }
 
-  // Income
-  screens.push({
-    group: "wiz.s.income",
-    node: (
-      <Question
-        title={t("wiz.s.income")}
-        q={isSalaried ? t("wiz.q.salary") : t("wiz.q.business")}
-      >
-        {isSalaried ? (
+  // Income — freelancer gets a dedicated IT-export screen
+  if (isFreelancer) {
+    screens.push({
+      group: "wiz.s.income",
+      node: (
+        <Question title={t("wiz.s.income")} q={t("wiz.q.itExport")}>
           <MoneyField
             label=""
-            value={input.income.salary}
-            hint={t("wiz.q.salaryHint")}
-            onChange={(v) => patch("income", { salary: v })}
+            value={input.income.itExportReceipts}
+            hint={t("wiz.q.itExportHint")}
+            onChange={(v) => patch("income", { itExportReceipts: v })}
           />
-        ) : (
+          <CheckboxField
+            label={t("wiz.q.pseb")}
+            hint={t("wiz.q.psebHint")}
+            checked={input.income.psebRegistered}
+            onChange={(v) => patch("income", { psebRegistered: v })}
+          />
           <MoneyField
-            label=""
+            label={t("wiz.q.localIncome")}
             value={input.income.business}
-            hint={t("wiz.q.businessHint")}
             onChange={(v) => patch("income", { business: v })}
           />
-        )}
-      </Question>
-    ),
-  });
+        </Question>
+      ),
+    });
+  } else {
+    screens.push({
+      group: "wiz.s.income",
+      node: (
+        <Question
+          title={t("wiz.s.income")}
+          q={isSalaried ? t("wiz.q.salary") : t("wiz.q.business")}
+        >
+          {isSalaried ? (
+            <MoneyField
+              label=""
+              value={input.income.salary}
+              hint={t("wiz.q.salaryHint")}
+              onChange={(v) => patch("income", { salary: v })}
+            />
+          ) : (
+            <MoneyField
+              label=""
+              value={input.income.business}
+              hint={t("wiz.q.businessHint")}
+              onChange={(v) => patch("income", { business: v })}
+            />
+          )}
+        </Question>
+      ),
+    });
+  }
 
   screens.push({
     group: "wiz.s.income",

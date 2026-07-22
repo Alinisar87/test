@@ -5,6 +5,11 @@ export const registerSchema = z
     name: z.string().trim().min(2, "Please enter your full name."),
     email: z.string().trim().toLowerCase().email("Enter a valid email address."),
     password: z.string().min(8, "Password must be at least 8 characters."),
+    phone: z
+      .string()
+      .trim()
+      .optional()
+      .transform((v) => (v && v.length > 0 ? v : undefined)),
   })
   .strict();
 
@@ -35,7 +40,7 @@ const signedMoney = z
 
 export const filingInputSchema = z.object({
   taxYear: z.coerce.number().int(),
-  filerType: z.enum(["SALARIED", "BUSINESS", "AOP"]),
+  filerType: z.enum(["SALARIED", "BUSINESS", "AOP", "FREELANCER"]),
   taxpayer: z.object({
     fullName: z.string().trim().default(""),
     cnic: z.string().trim().default(""),
@@ -48,6 +53,8 @@ export const filingInputSchema = z.object({
     propertyRepairAllowance: z.coerce.boolean().default(true),
     otherNormal: money,
     finalRegimeIncome: money,
+    itExportReceipts: money,
+    psebRegistered: z.coerce.boolean().default(false),
   }),
   deductions: z.object({
     zakat: money,

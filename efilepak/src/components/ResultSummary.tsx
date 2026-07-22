@@ -83,6 +83,13 @@ export function ResultSummary({ result }: { result: TaxResult }) {
         {result.taxCredits.map((c) => (
           <Row key={c.label} label={`Less: ${c.label}`} amount={c.amount} note={c.note} negative />
         ))}
+        {result.itExportFinalTax > 0 && (
+          <Row
+            label="IT/ITeS export final tax (s.154A)"
+            amount={result.itExportFinalTax}
+            note={`${(result.itExportRate * 100).toFixed(2)}% of exports`}
+          />
+        )}
         <Row label="Tax chargeable" amount={result.taxChargeable} strong />
         <div className="my-1 border-t border-slate-100" />
         <Row label="Less: tax already paid / withheld" amount={result.taxAlreadyPaid} negative />

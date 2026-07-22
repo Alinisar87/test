@@ -2,7 +2,7 @@
 // These types are the contract between the wizard UI, the stored Filing.data,
 // and the computation engine.
 
-export type FilerType = "SALARIED" | "BUSINESS" | "AOP";
+export type FilerType = "SALARIED" | "BUSINESS" | "AOP" | "FREELANCER";
 
 /** A progressive tax bracket expressed in FBR's "base + rate on excess" form. */
 export interface Slab {
@@ -37,6 +37,11 @@ export interface FilingInput {
     propertyRepairAllowance: boolean;
     // Other income taxed at normal slab rates (e.g. certain other sources).
     otherNormal: number;
+    // Export receipts for IT / IT-enabled services (freelancers, s.154A).
+    // Taxed under a FINAL regime at a concessional rate — not at slab rates.
+    itExportReceipts: number;
+    // Registered with the Pakistan Software Export Board (lower final rate).
+    psebRegistered: boolean;
     // Income already taxed under a final/separate regime (dividends, profit on
     // debt subject to FTR, capital gains on securities, etc.). NOT added to
     // normal taxable income; captured for the wealth-statement reconciliation
@@ -105,6 +110,13 @@ export interface TaxResult {
   surcharge: number;
   taxCredits: TaxLine[];
   totalTaxCredits: number;
+
+  // Final-tax regime: IT / IT-enabled services export (s.154A).
+  itExportReceipts: number;
+  itExportRate: number;
+  itExportFinalTax: number;
+
+  // Normal tax (after credits) + final taxes.
   taxChargeable: number;
 
   // Settlement

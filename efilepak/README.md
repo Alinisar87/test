@@ -48,7 +48,10 @@ npm run dev                   # http://localhost:3000
 ## What's built
 
 - **Bilingual — English + اردو (RTL)** — full language toggle; the whole UI, including the questionnaire, flips to right-to-left Urdu. Structured to add Sindhi/Pashto/Punjabi/Balochi (mirrors FBR's own regional-language rollout) by extending one dictionary.
-- **Auth** — register / login / logout with hashed passwords and JWT cookie sessions; `USER` and `STAFF` roles.
+- **Auth** — register / login / logout with hashed passwords and JWT cookie sessions; `USER` and `STAFF` roles; optional WhatsApp number captured at signup.
+- **Freelancer / IT-export regime** — a first-class filer type with the s.154A final tax on IT/ITeS export receipts (1%, or 0.25% for PSEB-registered), stacking correctly on top of any local slab income.
+- **Status notifications** — email + WhatsApp on submission and every staff status change, via a provider seam (Resend + Meta WhatsApp Cloud API). Without keys it records a `LOGGED` notification instead of failing. Every attempt is persisted for audit.
+- **Payments** — charge a per-return fee before filing. Gateway-agnostic (`src/lib/payments.ts`) with a working **mock** provider for dev and a documented path for Pakistani gateways (Safepay/JazzCash/Easypaisa). Gated by `PAYMENTS_REQUIRED`; per-filer pricing configurable via env.
 - **Questionnaire wizard** — FBR-style **one question per screen** (matching the new "8 digital windows" simplified return), grouped into stages (about you → income → tax paid → deductions → wealth statement → documents → review) with a **live tax estimate** that updates as you type. Branches for salaried vs business/AOP.
 - **Auto-fill scaffolding** — an "auto-fill" step that captures employer/bank and pre-labels fields, with an honest note that live FBR data isn't accessible to third parties. `src/lib/prefill.ts` is the swappable seam for a future authorised FBR/PRAL feed.
 - **Fast-refund + deadline cues** — flags returns eligible for the sub-Rs 50,000 fast refund and shows a live 30 Sept 2026 deadline countdown; helpline/support block.

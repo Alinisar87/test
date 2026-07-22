@@ -125,7 +125,17 @@ export function computeTax(input: FilingInput): TaxResult {
 
   const totalTaxCredits = donationCredit + pensionCredit;
 
-  const taxChargeable = clampNonNegative(slabTax + surcharge - totalTaxCredits);
+  // --- 4b. Final tax: IT / IT-enabled services export (s.154A) -------------
+  const itExportReceipts = clampNonNegative(num(input.income.itExportReceipts));
+  const itExportRate = input.income.psebRegistered
+    ? year.itExportRatePseb
+    : year.itExportRateStandard;
+  const itExportFinalTax = round(itExportReceipts * itExportRate);
+
+  const normalTaxChargeable = clampNonNegative(
+    slabTax + surcharge - totalTaxCredits,
+  );
+  const taxChargeable = normalTaxChargeable + itExportFinalTax;
 
   // --- 5. Settle against tax already paid ---------------------------------
   const taxAlreadyPaid =
@@ -175,6 +185,9 @@ export function computeTax(input: FilingInput): TaxResult {
     surcharge,
     taxCredits,
     totalTaxCredits,
+    itExportReceipts,
+    itExportRate,
+    itExportFinalTax,
     taxChargeable,
     taxAlreadyPaid,
     taxPayable,
@@ -195,11 +208,16 @@ function reconcileWealth(
   const expenses = clampNonNegative(num(input.wealth.personalExpenses));
   const otherInflows = clampNonNegative(num(input.wealth.otherInflows));
   const finalRegimeIncome = clampNonNegative(num(input.income.finalRegimeIncome));
+  const itExportReceipts = clampNonNegative(num(input.income.itExportReceipts));
 
   const increaseInWealth = closing - opening;
   // Everything that could fund an increase in net worth over the year.
   const explainedBy =
-    declaredNormalIncome + finalRegimeIncome + otherInflows - expenses;
+    declaredNormalIncome +
+    finalRegimeIncome +
+    itExportReceipts +
+    otherInflows -
+    expenses;
   const unreconciled = increaseInWealth - explainedBy;
 
   // Treat within Rs 1,000 as reconciled to allow for rounding.
@@ -231,6 +249,8 @@ export function emptyFilingInput(
       propertyRepairAllowance: true,
       otherNormal: 0,
       finalRegimeIncome: 0,
+      itExportReceipts: 0,
+      psebRegistered: false,
     },
     deductions: { zakat: 0, donations: 0, pensionContribution: 0 },
     taxPaid: { salaryWithholding: 0, otherAdjustable: 0, advanceTax: 0 },

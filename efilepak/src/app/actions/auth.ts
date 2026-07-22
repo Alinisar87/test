@@ -21,11 +21,12 @@ export async function registerAction(
     name: formData.get("name"),
     email: formData.get("email"),
     password: formData.get("password"),
+    phone: formData.get("phone"),
   });
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Invalid details." };
   }
-  const { name, email, password } = parsed.data;
+  const { name, email, password, phone } = parsed.data;
 
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
@@ -33,7 +34,7 @@ export async function registerAction(
   }
 
   const user = await prisma.user.create({
-    data: { name, email, passwordHash: await hashPassword(password) },
+    data: { name, email, phone, passwordHash: await hashPassword(password) },
   });
 
   await createSession({

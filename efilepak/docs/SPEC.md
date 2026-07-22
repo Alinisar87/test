@@ -69,6 +69,19 @@ Pak leads with *done-for-you*: a professional files for you, handles business/AO
 complexity, reconciles the wealth statement, and follows up the refund — value
 FBR's self-service form does not provide.
 
+## v1.2 additions
+
+- **Freelancer / IT-export filer type** with the section 154A final tax
+  (1% standard, 0.25% PSEB) computed separately from slab income and folded into
+  the chargeable total. Engine tests cover both rates and the stacking case.
+- **Notifications** (`src/lib/notify.ts`) — email + WhatsApp on submit and every
+  staff status change; provider seam (Resend, Meta WhatsApp Cloud API) with a
+  logging fallback and a `Notification` audit table.
+- **Payments** (`src/lib/payments.ts`) — gateway-agnostic per-return fee with a
+  mock provider and a `Payment` table. `PAYMENTS_REQUIRED` gates submission; a
+  real gateway (Safepay/JazzCash) confirms via webhook instead of the mock
+  confirm route. Stripe is intentionally not assumed (unavailable in Pakistan).
+
 ## Workflow
 
 ```

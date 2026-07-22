@@ -30,6 +30,16 @@ export function AuthForm({
         <Field label={t("auth.name")} name="name" type="text" autoComplete="name" required />
       )}
       <Field label={t("auth.email")} name="email" type="email" autoComplete="email" required />
+      {isRegister && (
+        <Field
+          label={t("auth.phone")}
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          placeholder="+92 3XX XXXXXXX"
+          hint={t("auth.phoneHint")}
+        />
+      )}
       <Field
         label={t("auth.password")}
         name="password"

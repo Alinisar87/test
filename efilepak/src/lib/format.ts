@@ -13,6 +13,7 @@ export const FILER_TYPE_LABELS: Record<string, string> = {
   SALARIED: "Salaried individual",
   BUSINESS: "Business / self-employed",
   AOP: "Association of Persons (AOP)",
+  FREELANCER: "Freelancer / IT exporter",
 };
 
 export const STATUS_LABELS: Record<string, string> = {

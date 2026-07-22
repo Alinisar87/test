@@ -9,9 +9,18 @@ import { getSession } from "@/lib/auth";
 import { filingInputSchema } from "@/lib/validation";
 import {
   computeAndSerialize,
+  finalizeSubmission,
   getAuthorizedFiling,
+  hasPaidFiling,
 } from "@/lib/filings";
 import { emptyFilingInput } from "@/lib/tax/engine";
+import { notifyStatusChange } from "@/lib/notify";
+import {
+  createCheckout,
+  isPaymentRequired,
+  paymentProvider,
+  priceForFiling,
+} from "@/lib/payments";
 import type { FilerType, FilingStatus } from "@prisma/client";
 
 const EDITABLE: FilingStatus[] = ["DRAFT", "INFO_NEEDED"];
@@ -98,22 +107,39 @@ export async function submitFiling(filingId: string): Promise<void> {
   if (!filing) redirect("/dashboard");
   if (!EDITABLE.includes(filing.status)) redirect(`/filing/${filingId}`);
 
+  // Gate on payment if the deployment requires it.
+  if (isPaymentRequired() && !(await hasPaidFiling(filingId))) {
+    redirect(`/filing/${filingId}/pay`);
+  }
+
   const session = await getSession();
-  await prisma.filing.update({
-    where: { id: filingId },
+  await finalizeSubmission(filingId, session?.email ?? "user");
+  redirect(`/filing/${filingId}?submitted=1`);
+}
+
+/** Create a pending payment and hand off to the gateway checkout. */
+export async function startPayment(formData: FormData): Promise<void> {
+  const filingId = String(formData.get("filingId") || "");
+  const filing = await getAuthorizedFiling(filingId);
+  if (!filing) redirect("/dashboard");
+  const session = await getSession();
+  if (!session) redirect("/login");
+
+  const amount = priceForFiling(filing.filerType);
+  const count = await prisma.payment.count({ where: { filingId } });
+  const checkout = await createCheckout(filingId, amount, count);
+
+  await prisma.payment.create({
     data: {
-      status: "SUBMITTED",
-      submittedAt: new Date(),
-      events: {
-        create: {
-          status: "SUBMITTED",
-          message: "Submitted to the eFile Pak team for filing",
-          actor: session?.email ?? "user",
-        },
-      },
+      filingId,
+      userId: session.id,
+      amount,
+      status: "PENDING",
+      provider: paymentProvider(),
+      reference: checkout.reference,
     },
   });
-  redirect(`/filing/${filingId}?submitted=1`);
+  redirect(checkout.url);
 }
 
 // --- Document uploads -------------------------------------------------------
@@ -197,6 +223,7 @@ export async function updateFilingStatus(formData: FormData): Promise<void> {
       },
     },
   });
+  await notifyStatusChange(filingId, status, message);
   revalidatePath(`/admin/${filingId}`);
   redirect(`/admin/${filingId}`);
 }

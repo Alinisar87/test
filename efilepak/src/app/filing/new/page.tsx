@@ -13,6 +13,7 @@ export default async function NewFilingPage() {
   const options = [
     { value: "SALARIED", label: t("wiz.salaried"), hint: t("wiz.salariedHint") },
     { value: "BUSINESS", label: t("wiz.business"), hint: t("wiz.businessHint") },
+    { value: "FREELANCER", label: t("wiz.freelancer"), hint: t("wiz.freelancerHint") },
     { value: "AOP", label: t("wiz.aop"), hint: t("wiz.aopHint") },
   ];
 
